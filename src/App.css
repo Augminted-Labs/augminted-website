@@ -1,38 +1,196 @@
-.App {
-  text-align: center;
+:root {
+  --color-lemon: rgb(229, 248, 18);
+  --color-cerise: rgb(246, 17, 100);
+  --color-blue: rgb(15, 87, 247);
+  --size-50: 0.25rem;
+  --size-100: 0.5rem;
+  --size-200: 0.75rem;
+  --size-300: 1rem;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mie {
+  font-family: "miedinger";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mie-bold {
+  font-family: "miedinger-bold";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mie-light {
+  font-family: "miedinger-light";
+}
+
+.header {
+  background-color: var(--color-lemon);
+  padding: var(--size-200);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--size-200);
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+.title {
+  white-space: nowrap;
+  font-size: 1.5rem;
+}
+
+.wristband {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wristband-glue {
+  display: none;
+}
+
+@media (min-width: 575px) {
+  .wristband-glue {
+    display: flex;
+    background-color: white;
+    min-width: 10rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.wristband-code {
+  transform: rotate(90deg);
+}
+
+.wristband {
+  min-width: 55rem;
+}
+
+.wristband-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-50);
+}
+
+@media (min-width: 575px) {
+  .wristband-heading {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-100);
+  }
+}
+
+.wristband-heading-subtitle {
+  font-size: 0.75rem;
+}
+
+.wristband-body {
+  padding: var(--size-100);
+  flex: 0 0 100%;
+}
+
+.wristband-main-title {
+  font-size: 1.9rem;
+}
+
+.wristband-cerise {
+  background-color: var(--color-cerise);
+}
+
+.wristband-blue {
+  color: white;
+  background-color: var(--color-blue);
+}
+
+.wristband-lemon {
+  background-color: var(--color-lemon);
+}
+
+.wristband-black {
+  color: white;
+  background-color: black;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+details summary::marker {
+  display: none;
+  content: "";
+}
+
+.translate-reset .translate-1,
+.translate-reset .translate-2 {
+  transition: transform 0.25s;
+}
+
+.translate-1 {
+  transform: translate(-35rem);
+}
+
+.translate-2 {
+  transform: translate(-50rem);
+}
+
+.translate-reset:hover .translate-1,
+.translate-reset:hover .translate-2,
+.translate-reset:focus .translate-1,
+.translate-reset:focus .translate-2 {
+  transform: translate(-10rem);
+}
+
+.content-area {
+  height: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  overflow: hidden;
+  transition: 0.6s ease;
+  background-color: black;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.content-area-open {
+  height: auto;
+  transform: scaleY(100%);
+}
+
+.team-area {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.team-member {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-300);
+  padding: var(--size-300);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.team-member-name {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 950px) {
+  .team-member {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .team-member + .team-member {
+    border-left: 1px solid white;
+  }
+
+  .team-area {
+    flex-direction: row;
+    justify-content: center;
   }
 }
