@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useRef, useState } from "react";
+import React, { PropsWithChildren, ReactNode, useRef, useState } from "react";
 import "./App.css";
 import {
   AugmintedLogo,
@@ -99,9 +99,37 @@ export function HomePage() {
               <span className="mie-bold">Augminted</span>{" "}
               <span className="mie-light">Labs</span>
             </div>
+            <div className="mie-bold">Our collective</div>
             <div>
-              Decentraliaztion doesn't have to mean alienation. We aim to
-              produce fun, useful content for the web3 community.
+              <p>Decentraliaztion doesn't have to mean alienation.</p>
+              <p>
+                Augminted Labs is a collective of artists, engineers, and
+                analysts helping businesses and community members launch their
+                own web3 projects.
+              </p>
+              <p>
+                The distributed web is more than just contracts and tokens
+                &mdash; it's art and design, it's attracting an audience, it's a
+                vibrant product launch. Whether you need a little help crafting
+                a pitch deck, or a complete end-to-end implementation, we've got
+                the people and passion to dream impossible dreams and make web3
+                visions reality.
+              </p>
+              <p>
+                <a className='underline' href="#" onClick={handleWristbandClicked("contact")}>
+                  Contact us
+                </a>
+                , and start your Augminted journey.
+              </p>
+            </div>
+            <div className="mie-bold">We do</div>
+            <div>
+              <ul>
+                <li>Graphic design and illustration</li>
+                <li>NFTs and Solidity contracts</li>
+                <li>Web design and development</li>
+                <li>Community building and go-to-market</li>
+              </ul>
             </div>
           </div>
         </Wristband>
@@ -119,24 +147,50 @@ export function HomePage() {
             <TeamMember
               name="ohDots"
               image={dotsImage}
-              blurb=""
               title="Founder &amp; Software Engineer"
               url="https://twitter.com/ohDotss"
-            />
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "var(--size-100)",
+                }}
+              >
+                <ul>
+                  <li>Hip-Hop Head</li>
+                  <li>Beer Enthusiast</li>
+                  <li>Do a little bit of everything</li>
+                </ul>
+                <q>
+                  Success is not final, failure is not fatal: it is the courage
+                  to continue that counts.
+                </q>
+              </div>
+            </TeamMember>
             <TeamMember
               name="3LLL"
               image={lllImage}
-              blurb=""
               title="Artist"
               url="https://twitter.com/FutureBoy3LLL"
             />
             <TeamMember
               name="eelzy"
               image={eelzyImage}
-              blurb=""
               title="Software Engineer"
               url="https://twitter.com/eelzy___"
-            />
+            >
+              <div>
+                <p>
+                  An emoji-brained eel that wants you to eat your vegetables and
+                  read Marx.
+                </p>
+                <p>
+                  A decade of professional software engineering experience,
+                  specializing in front-end dev.
+                </p>
+              </div>
+            </TeamMember>
           </div>
         </Wristband>
         <Wristband
@@ -272,16 +326,15 @@ export function Wristband(props: WristbandProps) {
   );
 }
 
-interface TeamMemberProps {
+type TeamMemberProps = {
   name: string;
   title: string;
   image: string;
-  blurb: string;
   url: string;
-}
+} & PropsWithChildren<{}>;
 
 function TeamMember(props: TeamMemberProps) {
-  const { name, image, blurb, title, url } = props;
+  const { name, image, children, title, url } = props;
   return (
     <a
       href={url}
@@ -303,7 +356,7 @@ function TeamMember(props: TeamMemberProps) {
       />
       <div className="mie-bold team-member-name">{name}</div>
       <div className="mie-bold">&gt;&gt; {title}</div>
-      <div>{blurb}</div>
+      <div>{children}</div>
     </a>
   );
 }

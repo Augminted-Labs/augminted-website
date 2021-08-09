@@ -1,0 +1,4 @@
+- Move 8ball code into website, click once input
+- Careers and blogs section
+- Update favicons
+- Create project sections

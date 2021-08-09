@@ -6,17 +6,27 @@
   --size-100: 0.5rem;
   --size-200: 0.75rem;
   --size-300: 1rem;
+  --size-400: 1.25rem;
   overflow-x: hidden;
 }
 
 a {
-  color: white;
+  color: currentColor;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
   text-decoration: underline;
+}
+
+li {
+  list-style: square;
+  list-style-position: inside;
+}
+
+p + p {
+  margin-top: var(--size-400);
 }
 
 .mie {
@@ -29,6 +39,10 @@ a:focus {
 
 .mie-light {
   font-family: "miedinger-light";
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .header {
