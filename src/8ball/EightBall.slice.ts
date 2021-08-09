@@ -101,7 +101,17 @@ export const connectClicked = createThunk(async (args, dispatch, getState) => {
 export const questionSubmitted = createThunk<BallFormData>(
   async (args, dispatch, getState) => {
     const state = getState()["8ball"];
+
     const contract = EightBallFactory(state.chainId);
+
+    if (!contract) {
+      dispatch(
+        actions.questionSubmittedFailure({
+          message: `This contract is not yet available on CHAIN_ID ${state.chainId}`,
+        })
+      );
+      return;
+    }
 
     contract.once("EightBallAdded", (err, evt) => {
       const { answer } = evt.returnValues;

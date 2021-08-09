@@ -77,6 +77,7 @@ function EightBall(props: AppProps) {
         <input
           type="text"
           placeholder="write your question here"
+          autoComplete="off"
           {...register("question")}
         />
         <button className="button" type="submit">
@@ -89,7 +90,18 @@ function EightBall(props: AppProps) {
               <br />
               CHAIN_ID: {chainId}
               <br />
-              {failure}
+              {failure && (
+                <span
+                  style={{
+                    backgroundColor: "var(--color-cerise)",
+                    color: "whitesmoke",
+                    fontWeight: "bold",
+                    padding: "var(--size-100)",
+                  }}
+                >
+                  {failure}
+                </span>
+              )}
             </code>
           </pre>
         </div>
