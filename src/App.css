@@ -8,7 +8,6 @@
   --size-300: 1rem;
   --size-400: 1.25rem;
   --header-height: 7rem;
-  overflow-x: hidden;
 }
 
 a {
@@ -121,17 +120,17 @@ section {
   transform: rotate(90deg);
 }
 
-.wristband {
-  min-width: 55rem;
-}
-
 .wristband-heading {
   display: flex;
   flex-direction: column;
   gap: var(--size-50);
 }
 
-@media (min-width: 575px) {
+@media (min-width: 880px) {
+  .wristband {
+    min-width: 55rem;
+  }
+
   .wristband-heading {
     flex-direction: row;
     align-items: center;
@@ -170,35 +169,29 @@ section {
   background-color: black;
 }
 
-.no-wrap {
-  white-space: nowrap;
-}
-
 details summary::marker {
   display: none;
   content: "";
 }
 
-.translate-reset .translate-1,
-.translate-reset .translate-2 {
+.translate-target {
   transition: transform 0.25s;
 }
 
 .translate-1 {
-  transform: translate(-35rem);
+  transform: translate(0rem);
 }
 
 .translate-2 {
-  transform: translate(-50rem);
+  transform: translate(-40rem);
 }
 
-.wristband-container {
+.translate-3 {
+  transform: translate(-25rem);
 }
 
-.translate-reset:hover .translate-1,
-.translate-reset:hover .translate-2,
-.translate-reset:focus .translate-1,
-.translate-reset:focus .translate-2 {
+.translate-reset:hover .translate-target,
+.translate-reset:focus .translate-target {
   transform: translate(-10rem);
 }
 
@@ -280,4 +273,8 @@ details summary::marker {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.project-area {
+  margin: 2rem;
 }

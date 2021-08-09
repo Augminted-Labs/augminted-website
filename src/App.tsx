@@ -56,7 +56,7 @@ export function HomePage() {
           kind="Info"
           title="About"
           subtitle="Augminted Labs information"
-          translate={gt880 ? 2 : 0}
+          translate={gt880 ? 1 : 0}
           code="000001"
           contentAreaColor="black"
         >
@@ -110,7 +110,7 @@ export function HomePage() {
           kind="Info"
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
-          translate={gt880 ? 1 : 0}
+          translate={gt880 ? 2 : 0}
           code="000002"
         >
           <div className="team-area">
@@ -179,7 +179,7 @@ export function HomePage() {
           kind="Info"
           title="Contact"
           subtitle="Augminted Labs"
-          translate={gt880 ? 2 : 0}
+          translate={gt880 ? 3 : 0}
           code="000003"
         >
           <div className="contact-area">
@@ -214,7 +214,7 @@ export function HomePage() {
           code="00004"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -228,12 +228,12 @@ export function HomePage() {
           color="black"
           kind="Project"
           title="Ethereals"
-          subtitle="Web3 Development for Official Release Date"
+          subtitle="Web3 Development"
           translate={gt880 ? 2 : 0}
           code="00005"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -247,12 +247,12 @@ export function HomePage() {
           color="cerise"
           kind="Project"
           title="N0XSCAPE ALPHA"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 1 : 0}
+          subtitle="Web3 Development"
+          translate={gt880 ? 3 : 0}
           code="00006"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -265,13 +265,13 @@ export function HomePage() {
           onClick={handleWristbandClicked("2")}
           color="blue"
           kind="Project"
-          title="Beats & Houseplants"
+          title="Beats &amp; Houseplants"
           subtitle="Music for the soul"
-          translate={gt880 ? 2 : 0}
+          translate={gt880 ? 1 : 0}
           code="00007"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -286,11 +286,11 @@ export function HomePage() {
           kind="Project"
           title="Magic Eight Ball"
           subtitle="Ask and Recieve"
-          translate={gt880 ? 1 : 0}
+          translate={gt880 ? 2 : 0}
           code="00008"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -305,49 +305,11 @@ export function HomePage() {
           kind="Info"
           title="Careers"
           subtitle="Interested in joining the team?"
-          translate={gt880 ? 2 : 0}
-          code="00009"
-          contentAreaColor="black"
-        >
-          <div className="Project-Area">
-            <div className="Title">
-              <span className="mie-bold">Augminted</span>
-              <span className="mie-light">Labs</span>
-            </div>
-            <div className="mie-bold">Project Details Coming Soon</div>
-          </div>
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "5"}
-          onClick={handleWristbandClicked("5")}
-          color="cerise"
-          kind="Info"
-          title="Test Page"
-          subtitle="Interested in joining the team?"
           translate={gt880 ? 3 : 0}
           code="00009"
           contentAreaColor="black"
         >
-          <div className="Project-Area">
-            <div className="Title">
-              <span className="mie-bold">Augminted</span>
-              <span className="mie-light">Labs</span>
-            </div>
-            <div className="mie-bold">Project Details Coming Soon</div>
-          </div>
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "6"}
-          onClick={handleWristbandClicked("6")}
-          color="blue"
-          kind="Info"
-          title="Test Page 2"
-          subtitle="Interested in joining the team?"
-          translate={gt880 ? 2 : 0}
-          code="00009"
-          contentAreaColor="black"
-        >
-          <div className="Project-Area">
+          <div className="project-area">
             <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
@@ -389,7 +351,7 @@ export function Wristband(props: WristbandProps) {
     isOpen,
     onClick,
   } = props;
-  const [gt575] = useMediaQuery("(min-width: 575px)");
+  const [gt880] = useMediaQuery("(min-width: 880px)");
   const ref = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -401,7 +363,9 @@ export function Wristband(props: WristbandProps) {
   }, [isOpen]);
 
   const mainEl = (
-    <div className={`wristband no-wrap translate-${translate}`}>
+    <div
+      className={`wristband translate-target translate-${translate}`}
+    >
       <div className="wristband-glue">
         <div style={{ maxWidth: "7rem" }}>
           <WristbandTape />
@@ -423,7 +387,7 @@ export function Wristband(props: WristbandProps) {
   const state = isOpen ? "open" : "closed";
   const contentAreaClassName = `content-area content-area-${state} content-area-${contentAreaColor}`;
 
-  if (gt575) {
+  if (gt880) {
     return (
       <section ref={ref}>
         <div
@@ -450,7 +414,7 @@ export function Wristband(props: WristbandProps) {
         tabIndex={0}
         onClick={onClick}
         onKeyDown={withEnter(onClick)}
-        className={`wristband-${color} translate-reset`}
+        className={`wristband-${color}`}
       >
         {mainEl}
       </div>
