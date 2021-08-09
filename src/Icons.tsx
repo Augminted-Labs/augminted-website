@@ -15,6 +15,7 @@ export function AugmintedLogo() {
       viewBox="0 0 82 82"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ width: "100%" }}
     >
       <circle cx="41" cy="41" r="39.87" style={st0} />
       <polygon
@@ -47,6 +48,7 @@ export function EthLogo() {
       viewBox="0 0 82 82"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ width: "100%" }}
     >
       <circle style={st0} cx="41" cy="41" r="39.87" />
       <polygon style={st0} points="57.51 41.37 41 51.08 24.49 41.37 41 13.71" />
@@ -73,6 +75,7 @@ export function WristbandTape() {
       viewBox="0 0 175.19 127.28"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ width: "100%" }}
     >
       <path
         style={st0}
@@ -111,7 +114,7 @@ export function HeaderDecoration() {
       viewBox="0 0 222 55"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ maxWidth: "10rem" }}
+      style={{ width: "100%" }}
     >
       <polygon style={st0} points="95.65 2.1 61.72 2.1 43.54 52.9 77.31 52.9" />
       <polygon style={st0} points="55.49 2.1 35.6 2.1 17.42 52.9 37.16 52.9" />

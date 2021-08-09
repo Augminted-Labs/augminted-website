@@ -44,7 +44,9 @@ export function HomePage() {
           <span className="mie-light">Labs</span>
         </div>
 
-        <HeaderDecoration />
+        <div style={{ maxWidth: "10rem" }}>
+          <HeaderDecoration />
+        </div>
       </header>
       <main>
         {/* <Wristband
@@ -116,7 +118,11 @@ export function HomePage() {
                 visions reality.
               </p>
               <p>
-                <a className='underline' href="#" onClick={handleWristbandClicked("contact")}>
+                <a
+                  className="underline"
+                  href="#"
+                  onClick={handleWristbandClicked("contact")}
+                >
                   Contact us
                 </a>
                 , and start your Augminted journey.
