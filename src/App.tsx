@@ -94,7 +94,7 @@ export function HomePage() {
           subtitle="Augminted Labs information"
           translate={gt880 ? 2 : 0}
           code="000001"
-          contentAreaColor="white"
+          contentAreaColor="black"
         >
           <div className="about-area">
             <div className="title">
@@ -237,6 +237,120 @@ export function HomePage() {
               <FaGithub style={{ fontSize: "8rem" }} />
               Augminted-Labs
             </a>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "n0x"}
+          onClick={handleWristbandClicked("n0x")}
+          color="lemon"
+          kind="Project"
+          title="N0XSCAPE PRESALE"
+          subtitle="Concept Art and Early Support"
+          translate={gt880 ? 1 : 0}
+          code="00004"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "ETH"}
+          onClick={handleWristbandClicked("ETH")}
+          color="black"
+          kind="Project"
+          title="Ethereals"
+          subtitle="Web3 Development for Official Release Date"
+          translate={gt880 ? 2 : 0}
+          code="00005"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "1"}
+          onClick={handleWristbandClicked("1")}
+          color="cerise"
+          kind="Project"
+          title="N0XSCAPE ALPHA"
+          subtitle="Web3 Development for Official Release Date"
+          translate={gt880 ? 1 : 0}
+          code="00006"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "2"}
+          onClick={handleWristbandClicked("2")}
+          color="blue"
+          kind="Project"
+          title="Beats & Houseplants"
+          subtitle="Music for the soul"
+          translate={gt880 ? 2 : 0}
+          code="00007"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "3"}
+          onClick={handleWristbandClicked("3")}
+          color="lemon"
+          kind="Project"
+          title="Magic Eight Ball"
+          subtitle="Ask and Recieve"
+          translate={gt880 ? 1 : 0}
+          code="00008"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "4"}
+          onClick={handleWristbandClicked("4")}
+          color="black"
+          kind="Info"
+          title="Careers"
+          subtitle="Interested in joining the team?"
+          translate={gt880 ? 2 : 0}
+          code="00009"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
           </div>
         </Wristband>
       </main>
