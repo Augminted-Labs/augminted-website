@@ -6,7 +6,6 @@ export function AugmintedLogo() {
     stroke: "#231F20",
     strokeMiterlimit: 10,
     strokeWidth: 1.5,
-    
   };
   const st1: CSSProperties = { fill: "#010101" };
   return (
@@ -112,6 +111,7 @@ export function HeaderDecoration() {
       viewBox="0 0 222 55"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ maxWidth: "10rem" }}
     >
       <polygon style={st0} points="95.65 2.1 61.72 2.1 43.54 52.9 77.31 52.9" />
       <polygon style={st0} points="55.49 2.1 35.6 2.1 17.42 52.9 37.16 52.9" />

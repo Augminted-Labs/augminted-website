@@ -9,6 +9,16 @@
   overflow-x: hidden;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
 .mie {
   font-family: "miedinger";
 }
@@ -30,7 +40,7 @@
   gap: var(--size-200);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .header {
     flex-direction: row;
     justify-content: center;
@@ -39,8 +49,11 @@
 }
 
 .title {
+  display: flex;
+  align-items: baseline;
   white-space: nowrap;
   font-size: 1.5rem;
+  gap: 0.1rem;
 }
 
 .wristband {
@@ -53,10 +66,11 @@
   display: none;
 }
 
-@media (min-width: 575px) {
+@media (min-width: 880px) {
   .wristband-glue {
     display: flex;
     background-color: white;
+    color: black;
     min-width: 10rem;
     justify-content: space-between;
     align-items: center;
@@ -138,11 +152,25 @@ details summary::marker {
   transform: translate(-50rem);
 }
 
+.wristband-container {
+  
+}
+
 .translate-reset:hover .translate-1,
 .translate-reset:hover .translate-2,
 .translate-reset:focus .translate-1,
 .translate-reset:focus .translate-2 {
   transform: translate(-10rem);
+}
+
+.content-area-white {
+  background-color: white;
+  color: black;
+}
+
+.content-area-black {
+  background-color: black;
+  color: white;
 }
 
 .content-area {
@@ -151,7 +179,6 @@ details summary::marker {
   transform-origin: top;
   overflow: hidden;
   transition: 0.6s ease;
-  background-color: black;
   display: flex;
   justify-content: center;
 }
@@ -171,7 +198,7 @@ details summary::marker {
 .team-member {
   display: flex;
   flex-direction: column;
-  gap: var(--size-300);
+  gap: var(--size-100);
   padding: var(--size-300);
 }
 
@@ -193,4 +220,25 @@ details summary::marker {
     flex-direction: row;
     justify-content: center;
   }
+}
+
+.about-area {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-300);
+  max-width: 65ch;
+}
+
+.contact-area {
+  margin: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

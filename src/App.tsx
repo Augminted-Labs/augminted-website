@@ -10,10 +10,23 @@ import { useMediaQuery } from "./util";
 import dotsImage from "./images/Cool-Cat-3985---no-background.png";
 import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
+import { FaTwitter, FaGithub } from "react-icons/fa";
+import { useLayoutEffect } from "react";
 
 export function HomePage() {
-  const [openSection, setOpenSection] = useState<number>();
+  const [openSection, setOpenSection] = useState<string>();
   const [gt880] = useMediaQuery("(min-width: 880px)");
+
+  function handleWristbandClicked(id: string) {
+    return () => {
+      if (openSection === id) {
+        setOpenSection(undefined);
+        return;
+      }
+
+      setOpenSection(id);
+    };
+  }
 
   return (
     <>
@@ -30,88 +43,131 @@ export function HomePage() {
           <span className="mie-bold">Augminted</span>{" "}
           <span className="mie-light">Labs</span>
         </div>
-        <div style={{ maxWidth: "13rem" }}>
-          <HeaderDecoration />
-        </div>
+
+        <HeaderDecoration />
       </header>
       <main>
-        <Wristband
-          isOpen={openSection === 0}
-          onClick={() => setOpenSection(0)}
+        {/* <Wristband
+          isOpen={openSection === "m8b"}
+          onClick={handleWristbandClicked("m8b")}
           color="cerise"
           kind="Project"
           title="Magic 8 Ball"
           subtitle="Web3 Development for Official Release Date"
           translate={gt880 ? 1 : 0}
-          code="TBD"
+          code="00001"
         >
           <Placeholder />
         </Wristband>
         <Wristband
-          isOpen={openSection === 1}
-          onClick={() => setOpenSection(1)}
+          isOpen={openSection === "ethereals"}
+          onClick={handleWristbandClicked("ethereals")}
           color="lemon"
           kind="Project"
           title="Ethereals"
           subtitle="Web3 Development for Official Release Date"
           translate={gt880 ? 2 : 0}
-          code="TBD"
+          code="00001"
         >
           <Placeholder />
         </Wristband>
         <Wristband
-          isOpen={openSection === 2}
-          onClick={() => setOpenSection(2)}
+          isOpen={openSection === "n0x"}
+          onClick={handleWristbandClicked("n0x")}
           color="cerise"
           kind="Project"
           title="N0xscape"
           subtitle="Web3 Development for Official Release Date"
           translate={gt880 ? 1 : 0}
-          code="TBD"
+          code="00001"
         >
           <Placeholder />
-        </Wristband>
+        </Wristband> */}
         <Wristband
-          isOpen={openSection === 3}
-          onClick={() => setOpenSection(3)}
+          isOpen={openSection === "about"}
+          onClick={handleWristbandClicked("about")}
           color="black"
           kind="Info"
           title="About"
           subtitle="Augminted Labs information"
           translate={gt880 ? 2 : 0}
-          code="TBD"
+          code="000001"
+          contentAreaColor="white"
         >
-          <Placeholder />
+          <div className="about-area">
+            <div className="title">
+              <span className="mie-bold">Augminted</span>{" "}
+              <span className="mie-light">Labs</span>
+            </div>
+            <div>
+              Decentraliaztion doesn't have to mean alienation. We aim to
+              produce fun, useful content for the web3 community.
+            </div>
+          </div>
         </Wristband>
         <Wristband
-          isOpen={openSection === 4}
-          onClick={() => setOpenSection(4)}
+          isOpen={openSection === "team"}
+          onClick={handleWristbandClicked("team")}
           color="cerise"
           kind="Info"
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
           translate={gt880 ? 1 : 0}
-          code="TBD"
+          code="000002"
         >
           <div className="team-area">
             <TeamMember
               name="ohDots"
               image={dotsImage}
-              blurb="blah"
-              title="Title"
+              blurb=""
+              title="Founder &amp; Software Engineer"
+              url="https://twitter.com/ohDotss"
             />
             <TeamMember
               name="3LLL"
               image={lllImage}
-              blurb="blah"
-              title="Title"
+              blurb=""
+              title="Artist"
+              url="https://twitter.com/FutureBoy3LLL"
             />
             <TeamMember
               name="eelzy"
               image={eelzyImage}
-              blurb="blah"
-              title="Title"
+              blurb=""
+              title="Software Engineer"
+              url="https://twitter.com/eelzy___"
             />
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "contact"}
+          onClick={handleWristbandClicked("contact")}
+          color="blue"
+          kind="Info"
+          title="Contact"
+          subtitle="Augminted Labs"
+          translate={gt880 ? 2 : 0}
+          code="000003"
+        >
+          <div className="contact-area">
+            <a
+              href="https://twitter.com/augminted"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact"
+            >
+              <FaTwitter style={{ fontSize: "8rem" }} />
+              @augminted
+            </a>
+            <a
+              href="https://github.com/Augminted-Labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact"
+            >
+              <FaGithub style={{ fontSize: "8rem" }} />
+              Augminted-Labs
+            </a>
           </div>
         </Wristband>
       </main>
@@ -122,6 +178,7 @@ export function HomePage() {
 
 export type WristbandProps = {
   color: "lemon" | "cerise" | "blue" | "black";
+  contentAreaColor?: "black" | "white";
   kind: string;
   title: string;
   subtitle: string;
@@ -134,6 +191,7 @@ export type WristbandProps = {
 export function Wristband(props: WristbandProps) {
   const {
     color,
+    contentAreaColor = "black",
     kind,
     title,
     subtitle,
@@ -146,10 +204,14 @@ export function Wristband(props: WristbandProps) {
   const [gt575] = useMediaQuery("(min-width: 575px)");
   const ref = useRef<HTMLElement>(null);
 
-  function handleClick() {
-    // ref.current?.scrollTo({behavior: 'smooth'});
-    onClick();
-  }
+  useLayoutEffect(() => {
+    if (isOpen) {
+      window.scrollTo({
+        top: ref.current?.getBoundingClientRect().top || 0,
+        behavior: "smooth",
+      });
+    }
+  }, [isOpen]);
 
   const mainEl = (
     <div className={`wristband no-wrap translate-${translate}`}>
@@ -171,20 +233,18 @@ export function Wristband(props: WristbandProps) {
     </div>
   );
 
-  const contentAreaClassName = isOpen
-    ? "content-area content-area-open"
-    : "content-area";
+  const state = isOpen ? "open" : "closed";
+  const contentAreaClassName = `content-area content-area-${state} content-area-${contentAreaColor}`;
 
   if (gt575) {
     return (
       <section ref={ref}>
         <div
           tabIndex={0}
-          onClick={handleClick}
-          onKeyDown={withEnter(handleClick)}
-          className={`wristband-${color} translate-reset`}
+          onClick={onClick}
+          onKeyDown={withEnter(onClick)}
+          className={`wristband-container wristband-${color} translate-reset`}
           style={{
-            height: "85px",
             display: "flex",
           }}
         >
@@ -201,9 +261,9 @@ export function Wristband(props: WristbandProps) {
     <section ref={ref}>
       <div
         tabIndex={0}
-        onClick={handleClick}
-        onKeyDown={withEnter(handleClick)}
-        className={`wristband-${color}`}
+        onClick={onClick}
+        onKeyDown={withEnter(onClick)}
+        className={`wristband-${color} translate-reset`}
       >
         {mainEl}
       </div>
@@ -217,38 +277,41 @@ interface TeamMemberProps {
   title: string;
   image: string;
   blurb: string;
+  url: string;
 }
 
 function TeamMember(props: TeamMemberProps) {
-  const { name, image, blurb, title } = props;
+  const { name, image, blurb, title, url } = props;
   return (
-    <div className='team-member'>
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="team-member"
+      style={{
+        maxWidth: "20rem",
+      }}
+    >
       <img
         src={image}
-        style={{ backgroundColor: "var(--color-lemon)", maxWidth: "12rem" }}
+        alt=""
+        style={{
+          backgroundColor: "var(--color-lemon)",
+          padding: "1rem",
+          paddingLeft: "0.5rem",
+        }}
       />
       <div className="mie-bold team-member-name">{name}</div>
       <div className="mie-bold">&gt;&gt; {title}</div>
       <div>{blurb}</div>
-    </div>
-  );
-}
-
-function Placeholder() {
-  return (
-    <div
-      style={{ padding: "1rem", color: "white", minHeight: "20rem" }}
-      className="mie-bold"
-    >
-      Some content will go here...
-    </div>
+    </a>
   );
 }
 
 function withEnter(f: Function) {
   return (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      f();
+      f(e);
     }
   };
 }
