@@ -7,7 +7,7 @@
   --size-200: 0.75rem;
   --size-300: 1rem;
   --size-400: 1.25rem;
-  overflow-x: hidden;
+  --header-height: 7rem;
 }
 
 a {
@@ -52,6 +52,31 @@ p + p {
   flex-direction: column;
   align-items: center;
   gap: var(--size-200);
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+}
+
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+.header-decoration {
+  display: none;
+}
+
+@media (min-width: 880px) {
+  .header-decoration {
+    display: block;
+    max-width: 10rem;
+  }
+}
+
+.footer {
+  color: rgb(78, 78, 78);
+  text-align: center;
+  font-size: small;
+  padding: var(--size-100);
 }
 
 @media (min-width: 880px) {
@@ -95,17 +120,17 @@ p + p {
   transform: rotate(90deg);
 }
 
-.wristband {
-  min-width: 55rem;
-}
-
 .wristband-heading {
   display: flex;
   flex-direction: column;
   gap: var(--size-50);
 }
 
-@media (min-width: 575px) {
+@media (min-width: 880px) {
+  .wristband {
+    min-width: 55rem;
+  }
+
   .wristband-heading {
     flex-direction: row;
     align-items: center;
@@ -144,36 +169,29 @@ p + p {
   background-color: black;
 }
 
-.no-wrap {
-  white-space: nowrap;
-}
-
 details summary::marker {
   display: none;
   content: "";
 }
 
-.translate-reset .translate-1,
-.translate-reset .translate-2 {
+.translate-target {
   transition: transform 0.25s;
 }
 
 .translate-1 {
-  transform: translate(-35rem);
+  transform: translate(0rem);
 }
 
 .translate-2 {
-  transform: translate(-50rem);
+  transform: translate(-40rem);
 }
 
-.wristband-container {
-  
+.translate-3 {
+  transform: translate(-25rem);
 }
 
-.translate-reset:hover .translate-1,
-.translate-reset:hover .translate-2,
-.translate-reset:focus .translate-1,
-.translate-reset:focus .translate-2 {
+.translate-reset:hover .translate-target,
+.translate-reset:focus .translate-target {
   transform: translate(-10rem);
 }
 
@@ -206,7 +224,6 @@ details summary::marker {
   margin: 2rem;
   display: flex;
   flex-direction: column;
-  color: white;
 }
 
 .team-member {
@@ -248,11 +265,37 @@ details summary::marker {
 .contact-area {
   margin: 2rem;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--size-100);
+  padding: var(--size-300);
+}
+
+@media (min-width: 750px) {
+  .contact {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .contact + .contact {
+    border-left: 1px solid white;
+  }
+
+  .contact-area {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.project-area {
+  margin: 2rem;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }

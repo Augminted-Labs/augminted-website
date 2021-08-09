@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode, useRef, useState } from "react";
+import React, { PropsWithChildren, useRef, useState } from "react";
 import "./App.css";
 import {
   AugmintedLogo,
@@ -10,7 +10,7 @@ import { useMediaQuery } from "./util";
 import dotsImage from "./images/Cool-Cat-3985---no-background.png";
 import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
-import { FaTwitter, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useLayoutEffect } from "react";
 
 export function HomePage() {
@@ -44,47 +44,11 @@ export function HomePage() {
           <span className="mie-light">Labs</span>
         </div>
 
-        <div style={{ maxWidth: "10rem" }}>
+        <div className="header-decoration">
           <HeaderDecoration />
         </div>
       </header>
       <main>
-        {/* <Wristband
-          isOpen={openSection === "m8b"}
-          onClick={handleWristbandClicked("m8b")}
-          color="cerise"
-          kind="Project"
-          title="Magic 8 Ball"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 1 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "ethereals"}
-          onClick={handleWristbandClicked("ethereals")}
-          color="lemon"
-          kind="Project"
-          title="Ethereals"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 2 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "n0x"}
-          onClick={handleWristbandClicked("n0x")}
-          color="cerise"
-          kind="Project"
-          title="N0xscape"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 1 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband> */}
         <Wristband
           isOpen={openSection === "about"}
           onClick={handleWristbandClicked("about")}
@@ -92,9 +56,9 @@ export function HomePage() {
           kind="Info"
           title="About"
           subtitle="Augminted Labs information"
-          translate={gt880 ? 2 : 0}
+          translate={gt880 ? 1 : 0}
           code="000001"
-          contentAreaColor="white"
+          contentAreaColor="black"
         >
           <div className="about-area">
             <div className="title">
@@ -120,7 +84,7 @@ export function HomePage() {
               <p>
                 <a
                   className="underline"
-                  href="#"
+                  href="#contact"
                   onClick={handleWristbandClicked("contact")}
                 >
                   Contact us
@@ -146,7 +110,7 @@ export function HomePage() {
           kind="Info"
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
-          translate={gt880 ? 1 : 0}
+          translate={gt880 ? 2 : 0}
           code="000002"
         >
           <div className="team-area">
@@ -215,10 +179,10 @@ export function HomePage() {
           kind="Info"
           title="Contact"
           subtitle="Augminted Labs"
-          translate={gt880 ? 2 : 0}
+          translate={gt880 ? 3 : 0}
           code="000003"
         >
-          <div className="contact-area">
+          <div className="contact-area no-wrap">
             <a
               href="https://twitter.com/augminted"
               target="_blank"
@@ -237,10 +201,134 @@ export function HomePage() {
               <FaGithub style={{ fontSize: "8rem" }} />
               Augminted-Labs
             </a>
+            <a
+              href="mailto:nathan@augmintedlabs.io?subject=[Inquiry] I want to work with Augminted Labs!"
+              className="contact"
+            >
+              <FaEnvelope style={{ fontSize: "8rem" }} />
+              Email
+            </a>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "n0x"}
+          onClick={handleWristbandClicked("n0x")}
+          color="lemon"
+          kind="Project"
+          title="N0XSCAPE PRESALE"
+          subtitle="Concept Art and Early Support"
+          translate={gt880 ? 1 : 0}
+          code="00004"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "ETH"}
+          onClick={handleWristbandClicked("ETH")}
+          color="black"
+          kind="Project"
+          title="Ethereals"
+          subtitle="Web3 Development"
+          translate={gt880 ? 2 : 0}
+          code="00005"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "1"}
+          onClick={handleWristbandClicked("1")}
+          color="cerise"
+          kind="Project"
+          title="N0XSCAPE ALPHA"
+          subtitle="Web3 Development"
+          translate={gt880 ? 3 : 0}
+          code="00006"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "2"}
+          onClick={handleWristbandClicked("2")}
+          color="blue"
+          kind="Project"
+          title="Beats &amp; Houseplants"
+          subtitle="Music for the soul"
+          translate={gt880 ? 1 : 0}
+          code="00007"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "3"}
+          onClick={handleWristbandClicked("3")}
+          color="lemon"
+          kind="Project"
+          title="Magic Eight Ball"
+          subtitle="Ask and Recieve"
+          translate={gt880 ? 2 : 0}
+          code="00008"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "4"}
+          onClick={handleWristbandClicked("4")}
+          color="black"
+          kind="Info"
+          title="Careers"
+          subtitle="Interested in joining the team?"
+          translate={gt880 ? 3 : 0}
+          code="00009"
+          contentAreaColor="black"
+        >
+          <div className="project-area">
+            <div className="Title">
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
           </div>
         </Wristband>
       </main>
-      <footer></footer>
+      <footer className="footer">
+        <div>&copy; Augminted Labs</div>
+        <div>For more information, please re-read this website.</div>
+      </footer>
     </>
   );
 }
@@ -270,20 +358,21 @@ export function Wristband(props: WristbandProps) {
     isOpen,
     onClick,
   } = props;
-  const [gt575] = useMediaQuery("(min-width: 575px)");
+  const [gt880] = useMediaQuery("(min-width: 880px)");
   const ref = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    if (isOpen) {
-      window.scrollTo({
-        top: ref.current?.getBoundingClientRect().top || 0,
-        behavior: "smooth",
-      });
+    if (!isOpen) {
+      return;
     }
+
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [isOpen]);
 
   const mainEl = (
-    <div className={`wristband no-wrap translate-${translate}`}>
+    <div
+      className={`wristband translate-target translate-${translate}`}
+    >
       <div className="wristband-glue">
         <div style={{ maxWidth: "7rem" }}>
           <WristbandTape />
@@ -305,7 +394,7 @@ export function Wristband(props: WristbandProps) {
   const state = isOpen ? "open" : "closed";
   const contentAreaClassName = `content-area content-area-${state} content-area-${contentAreaColor}`;
 
-  if (gt575) {
+  if (gt880) {
     return (
       <section ref={ref}>
         <div
@@ -332,7 +421,7 @@ export function Wristband(props: WristbandProps) {
         tabIndex={0}
         onClick={onClick}
         onKeyDown={withEnter(onClick)}
-        className={`wristband-${color} translate-reset`}
+        className={`wristband-${color}`}
       >
         {mainEl}
       </div>
