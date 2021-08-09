@@ -30,7 +30,7 @@ export function HomePage() {
 
   return (
     <>
-      <header className="header">
+      <header className="header" style={{ position: "sticky", top: "0"}}>
         <div style={{ display: "flex", gap: "1rem" }}>
           <div style={{ maxWidth: "3rem" }}>
             <AugmintedLogo />
@@ -353,8 +353,63 @@ export function HomePage() {
             <div className="mie-bold">Project Details Coming Soon</div>
           </div>
         </Wristband>
+        <Wristband
+          isOpen={openSection === "5"}
+          onClick={handleWristbandClicked("5")}
+          color="cerise"
+          kind="Info"
+          title="Test Page"
+          subtitle="Interested in joining the team?"
+          translate={gt880 ? 3 : 0}
+          code="00009"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={openSection === "6"}
+          onClick={handleWristbandClicked("6")}
+          color="blue"
+          kind="Info"
+          title="Test Page 2"
+          subtitle="Interested in joining the team?"
+          translate={gt880 ? 2 : 0}
+          code="00009"
+          contentAreaColor="black"
+        >
+          <div className="Project-Area">
+            <div className="Title">  
+              <span className="mie-bold">Augminted</span>
+              <span className="mie-light">Labs</span>
+            </div>
+            <div className="mie-bold">Project Details Coming Soon</div>
+          </div>
+        </Wristband>
       </main>
-      <footer></footer>
+      <footer className="header" style={{ position: "sticky", bottom: "0"}}>
+        <div style={{ display: "flex", gap: "1rem"}}>
+          <div style={{ maxWidth: "3rem" }}>
+            <AugmintedLogo />
+          </div>
+          <div style={{ maxWidth: "3rem" }}>
+            <EthLogo />
+          </div>
+        </div>
+        <div className="title">
+          <span className="mie-bold">Augminted</span>{" "}
+          <span className="mie-light">Labs</span>
+        </div>
+
+        <div style={{ maxWidth: "10rem" }}>
+          <HeaderDecoration />
+        </div>
+      </footer>
     </>
   );
 }
