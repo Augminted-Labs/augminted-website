@@ -7,6 +7,7 @@
   --size-200: 0.75rem;
   --size-300: 1rem;
   --size-400: 1.25rem;
+  --header-height: 7rem;
   overflow-x: hidden;
 }
 
@@ -52,6 +53,31 @@ p + p {
   flex-direction: column;
   align-items: center;
   gap: var(--size-200);
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+}
+
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+.header-decoration {
+  display: none;
+}
+
+@media (min-width: 880px) {
+  .header-decoration {
+    display: block;
+    max-width: 10rem;
+  }
+}
+
+.footer {
+  color: rgb(78, 78, 78);
+  text-align: center;
+  font-size: small;
+  padding: var(--size-100);
 }
 
 @media (min-width: 880px) {
@@ -167,7 +193,6 @@ details summary::marker {
 }
 
 .wristband-container {
-  
 }
 
 .translate-reset:hover .translate-1,

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode, useRef, useState } from "react";
+import React, { PropsWithChildren, useRef, useState } from "react";
 import "./App.css";
 import {
   AugmintedLogo,
@@ -30,7 +30,7 @@ export function HomePage() {
 
   return (
     <>
-      <header className="header" style={{ position: "sticky", top: "0"}}>
+      <header className="header">
         <div style={{ display: "flex", gap: "1rem" }}>
           <div style={{ maxWidth: "3rem" }}>
             <AugmintedLogo />
@@ -44,47 +44,11 @@ export function HomePage() {
           <span className="mie-light">Labs</span>
         </div>
 
-        <div style={{ maxWidth: "10rem" }}>
+        <div className="header-decoration">
           <HeaderDecoration />
         </div>
       </header>
       <main>
-        {/* <Wristband
-          isOpen={openSection === "m8b"}
-          onClick={handleWristbandClicked("m8b")}
-          color="cerise"
-          kind="Project"
-          title="Magic 8 Ball"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 1 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "ethereals"}
-          onClick={handleWristbandClicked("ethereals")}
-          color="lemon"
-          kind="Project"
-          title="Ethereals"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 2 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "n0x"}
-          onClick={handleWristbandClicked("n0x")}
-          color="cerise"
-          kind="Project"
-          title="N0xscape"
-          subtitle="Web3 Development for Official Release Date"
-          translate={gt880 ? 1 : 0}
-          code="00001"
-        >
-          <Placeholder />
-        </Wristband> */}
         <Wristband
           isOpen={openSection === "about"}
           onClick={handleWristbandClicked("about")}
@@ -120,7 +84,7 @@ export function HomePage() {
               <p>
                 <a
                   className="underline"
-                  href="#"
+                  href="#contact"
                   onClick={handleWristbandClicked("contact")}
                 >
                   Contact us
@@ -251,7 +215,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -270,7 +234,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -289,7 +253,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -308,7 +272,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -327,7 +291,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -346,7 +310,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -365,7 +329,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -384,7 +348,7 @@ export function HomePage() {
           contentAreaColor="black"
         >
           <div className="Project-Area">
-            <div className="Title">  
+            <div className="Title">
               <span className="mie-bold">Augminted</span>
               <span className="mie-light">Labs</span>
             </div>
@@ -392,23 +356,9 @@ export function HomePage() {
           </div>
         </Wristband>
       </main>
-      <footer className="header" style={{ position: "sticky", bottom: "0"}}>
-        <div style={{ display: "flex", gap: "1rem"}}>
-          <div style={{ maxWidth: "3rem" }}>
-            <AugmintedLogo />
-          </div>
-          <div style={{ maxWidth: "3rem" }}>
-            <EthLogo />
-          </div>
-        </div>
-        <div className="title">
-          <span className="mie-bold">Augminted</span>{" "}
-          <span className="mie-light">Labs</span>
-        </div>
-
-        <div style={{ maxWidth: "10rem" }}>
-          <HeaderDecoration />
-        </div>
+      <footer className="footer">
+        <div>&copy; Augminted Labs</div>
+        <div>For more information, please re-read this website.</div>
       </footer>
     </>
   );
@@ -443,12 +393,11 @@ export function Wristband(props: WristbandProps) {
   const ref = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    if (isOpen) {
-      window.scrollTo({
-        top: ref.current?.getBoundingClientRect().top || 0,
-        behavior: "smooth",
-      });
+    if (!isOpen) {
+      return;
     }
+
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [isOpen]);
 
   const mainEl = (
