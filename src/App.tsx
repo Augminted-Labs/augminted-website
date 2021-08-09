@@ -179,7 +179,16 @@ export function HomePage() {
               image={lllImage}
               title="Artist"
               url="https://twitter.com/FutureBoy3LLL"
-            />
+            >
+              <p>Music Producer, Illustrator and Multimedia Designer.</p>
+              <p>
+                Previously <em>Final Bout</em> Co-Founder and Art Director.
+              </p>
+              <p>
+                Led design, social media and manufacturing of products line.
+                Over 10 years of professional illustration and design work.
+              </p>
+            </TeamMember>
             <TeamMember
               name="eelzy"
               image={eelzyImage}
