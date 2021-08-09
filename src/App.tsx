@@ -13,6 +13,8 @@ import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
 import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useLayoutEffect } from "react";
 
+import { EightBallConnected } from "./8ball/EightBall";
+
 export function HomePage() {
   const [openSection, setOpenSection] = useState<string>();
   const [gt880] = useMediaQuery("(min-width: 880px)");
@@ -292,18 +294,12 @@ export function HomePage() {
           color="lemon"
           kind="Project"
           title="Magic Eight Ball"
-          subtitle="Ask and Recieve"
+          subtitle="Ask and Receive"
           translate={gt880 ? 2 : 0}
           code="00008"
           contentAreaColor="black"
         >
-          <div className="project-area">
-            <div className="Title">
-              <span className="mie-bold">Augminted</span>
-              <span className="mie-light">Labs</span>
-            </div>
-            <div className="mie-bold">Project Details Coming Soon</div>
-          </div>
+          <EightBallConnected />
         </Wristband>
         <Wristband
           isOpen={openSection === "4"}
@@ -370,9 +366,7 @@ export function Wristband(props: WristbandProps) {
   }, [isOpen]);
 
   const mainEl = (
-    <div
-      className={`wristband translate-target translate-${translate}`}
-    >
+    <div className={`wristband translate-target translate-${translate}`}>
       <div className="wristband-glue">
         <div style={{ maxWidth: "7rem" }}>
           <WristbandTape />
