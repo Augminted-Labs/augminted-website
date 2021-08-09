@@ -224,7 +224,6 @@ details summary::marker {
   margin: 2rem;
   display: flex;
   flex-direction: column;
-  color: white;
 }
 
 .team-member {
@@ -266,15 +265,37 @@ details summary::marker {
 .contact-area {
   margin: 2rem;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--size-100);
+  padding: var(--size-300);
+}
+
+@media (min-width: 750px) {
+  .contact {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .contact + .contact {
+    border-left: 1px solid white;
+  }
+
+  .contact-area {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .project-area {
   margin: 2rem;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }

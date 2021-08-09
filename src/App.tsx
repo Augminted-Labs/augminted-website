@@ -10,7 +10,7 @@ import { useMediaQuery } from "./util";
 import dotsImage from "./images/Cool-Cat-3985---no-background.png";
 import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
-import { FaTwitter, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useLayoutEffect } from "react";
 
 export function HomePage() {
@@ -182,7 +182,7 @@ export function HomePage() {
           translate={gt880 ? 3 : 0}
           code="000003"
         >
-          <div className="contact-area">
+          <div className="contact-area no-wrap">
             <a
               href="https://twitter.com/augminted"
               target="_blank"
@@ -200,6 +200,13 @@ export function HomePage() {
             >
               <FaGithub style={{ fontSize: "8rem" }} />
               Augminted-Labs
+            </a>
+            <a
+              href="mailto:nathan@augmintedlabs.io?subject=[Inquiry] I want to work with Augminted Labs!"
+              className="contact"
+            >
+              <FaEnvelope style={{ fontSize: "8rem" }} />
+              Email
             </a>
           </div>
         </Wristband>
