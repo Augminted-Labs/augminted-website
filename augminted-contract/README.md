@@ -7,3 +7,4 @@
 - `yarn task:generate-ts`: Creates TypeScript definitions of contract ABIs
 - `yarn deploy`: Runs migrations on the local chain
 - `yarn deploy:rinkeby`: Runs migrations on the Rinkeby chain
+- `yarn deploy:main`: Runs migrations on the Rinkeby chain 

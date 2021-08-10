@@ -12,7 +12,9 @@
     "deploy": "truffle migrate",
     "deploy:rinkeby": "truffle migrate --network rinkeby"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.2.0"
+  },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.4.3",
     "@typechain/web3-v1": "^3.0.0",
