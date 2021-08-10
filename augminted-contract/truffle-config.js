@@ -10,7 +10,7 @@ if(result.error){
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-const { WALLET_PRIVATE_KEY, INFURA_PROJECT_ID } = process.env;
+const { WALLET_PRIVATE_KEY, INFURA_PROJECT_ID, ETHERSCAN_API_KEY } = process.env;
 
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -94,6 +94,9 @@ module.exports = {
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
   },
+  api_keys: {
+    etherscan: ETHERSCAN_API_KEY //replace this with your API key if you have one
+  },
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
@@ -124,4 +127,7 @@ module.exports = {
   db: {
     enabled: false,
   },
+  plugins: [
+    'truffle-plugin-verify'
+  ],
 };

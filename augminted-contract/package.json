@@ -20,6 +20,7 @@
     "@typechain/web3-v1": "^3.0.0",
     "dotenv": "^10.0.0",
     "truffle": "^5.4.2",
+    "truffle-plugin-verify": "^0.5.11",
     "typechain": "^5.1.2"
   }
 }
