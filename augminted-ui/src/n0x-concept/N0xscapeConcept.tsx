@@ -71,7 +71,7 @@ function N0xscapeConcept(props: AppProps) {
           max="5"
           placeholder="how many? (1-5)"
           autoComplete="off"
-          {...register("quantity")}
+          {...register("quantity", { required: true })}
         />
         <button className="concept-button" type="submit">
           Mint Token 0.05ETH each
@@ -110,12 +110,18 @@ function N0xscapeConcept(props: AppProps) {
 
   if (view === "success") {
     formSection = (
-      <div>Check your opensea.io after your transaction completes!</div>
+      <div>
+        <div>Success!</div>
+        <div>
+          Check out your{" "}
+          <a href="https://opensea.io/account">opensea.io</a> account!
+        </div>
+      </div>
     );
   }
   return (
     <div className="concept-area">
-      <div className="form">{formSection}</div>
+      <div className="concept-form">{formSection}</div>
     </div>
   );
 }
