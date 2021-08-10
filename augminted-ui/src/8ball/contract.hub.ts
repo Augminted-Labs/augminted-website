@@ -1,5 +1,5 @@
-import EightBallFactoryJSON from "./contract-abi/EightBallFactory.json";
-import { EightBallFactory as EightBallFactoryContract } from "./contract-abi/EightBallFactory";
+import EightBallFactoryJSON from "../contract-abi/EightBallFactory.json";
+import { EightBallFactory as EightBallFactoryContract } from "../contract-abi/EightBallFactory";
 import web3 from "web3";
 
 export const instance = new web3(web3.givenProvider);

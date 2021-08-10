@@ -1,4 +1,12 @@
-require("dotenv").config();
+const result = require("dotenv").config();
+
+if(result.error){
+  console.error("=========================================================================");
+  console.error("There was a problem reading the .env file. Did you remember to create it?");
+  console.error("=========================================================================");
+  console.error();
+  throw result.error
+}
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
