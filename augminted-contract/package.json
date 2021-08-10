@@ -1,0 +1,22 @@
+{
+  "name": "augminted-contract",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "contract": "truffle create contract",
+    "build": "truffle compile && yarn move-abis && yarn typings",
+    "move-abis": "rm -rf ../augminted-ui/src/contract-abi && cp -rv ./build/contracts/ ../augminted-ui/src/contract-abi/",
+    "typings": "typechain --target=web3-v1 --out-dir=../augminted-ui/src/contract-abi --glob=./build/contracts/*.json",
+    "deploy": "truffle migrate",
+    "deploy:rinkeby": "truffle migrate --network rinkeby",
+    "x": "truffle help"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.4.3",
+    "dotenv": "^10.0.0",
+    "truffle": "^5.4.2",
+    "typechain": "^5.1.2"
+  }
+}
