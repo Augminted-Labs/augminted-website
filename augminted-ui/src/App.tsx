@@ -14,6 +14,7 @@ import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useLayoutEffect } from "react";
 
 import { EightBallConnected } from "./8ball/EightBall";
+import { N0xscapeConceptConnected } from "./n0x-concept/N0xscapeConcept";
 
 export function HomePage() {
   const [openSection, setOpenSection] = useState<string>();
@@ -215,21 +216,15 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "n0x"}
           onClick={handleWristbandClicked("n0x")}
-          color="lemon"
+          color="cerise"
           kind="Project"
-          title="N0XSCAPE PRESALE"
+          title="n0xscape"
           subtitle="Concept Art and Early Support"
           translate={gt880 ? 1 : 0}
           code="00004"
-          contentAreaColor="black"
+          contentAreaColor="white"
         >
-          <div className="project-area">
-            <div className="Title">
-              <span className="mie-bold">Augminted</span>
-              <span className="mie-light">Labs</span>
-            </div>
-            <div className="mie-bold">Project Details Coming Soon</div>
-          </div>
+          <N0xscapeConceptConnected />
         </Wristband>
         <Wristband
           isOpen={openSection === "ETH"}

@@ -1,38 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EightBallFactory, instance as web3 } from "./contract.hub";
+import { N0xAlphaArt, instance as web3 } from "./contract.hub";
 import { createDispatches, createThunk } from "../utils";
 import detectProvider from "@metamask/detect-provider";
 
-export interface EightBallState {
+export interface N0xscapeConceptState {
   view:
     | "needs-provider"
     | "disconnected"
     | "connecting"
-    | "question"
+    | "ready"
     | "submitting"
-    | "answer";
-  answer: string;
+    | "success";
   account: string;
   failure: string;
   chainId: number;
 }
 
-export interface BallFormData {
-  question: string;
+export interface MintFormData {
+  quantity: string;
 }
 
-export function makeInitialState(): EightBallState {
+export function makeInitialState(): N0xscapeConceptState {
   return {
     view: "disconnected",
     account: "",
-    answer: "",
     failure: "",
     chainId: -1,
   };
 }
 
 export const slice = createSlice({
-  name: "8ball",
+  name: "n0x-concept",
   initialState: makeInitialState(),
   reducers: {
     pageLoadedFailure(state) {
@@ -48,25 +46,20 @@ export const slice = createSlice({
       state,
       action: PayloadAction<ConnectClickedSuccessPayload>
     ) {
-      state.view = "question";
+      state.view = "ready";
       state.account = action.payload.accounts[0];
       state.chainId = action.payload.chainId;
     },
-    ballReset(state) {
-      state.view = "question";
-      state.answer = "";
-    },
-    questionSubmittedPending(state) {
+    mintRequestSubmittedPending(state) {
       state.view = "submitting";
       state.failure = "";
     },
-    questionSubmittedFailure(state, action: PayloadAction<any>) {
-      state.view = "question";
+    mintRequestSubmittedFailure(state, action: PayloadAction<any>) {
+      state.view = "ready";
       state.failure = action.payload.message;
     },
-    questionSubmittedSuccess(state, action: PayloadAction<string>) {
-      state.view = "answer";
-      state.answer = action.payload;
+    mintRequestSubmittedSuccess(state, action: PayloadAction<string>) {
+      state.view = "success";
     },
   },
 });
@@ -77,7 +70,15 @@ type ConnectClickedSuccessPayload = {
 };
 
 export const pageLoaded = createThunk(async (args, dispatch, getState) => {
-  const provider = await detectProvider();
+  const provider: any = await detectProvider();
+
+  provider.on("chainChanged", (chainId: any) => {
+    console.log("Changing to: ", chainId);
+    // Handle the new chain.
+    // Correctly handling chain changes can be complicated.
+    // We recommend reloading the page unless you have good reason not to.
+    window.location.reload();
+  });
 
   if (!provider) {
     dispatch(slice.actions.pageLoadedFailure());
@@ -98,40 +99,39 @@ export const connectClicked = createThunk(async (args, dispatch, getState) => {
   dispatch(actions.connectClickedSuccess({ chainId, accounts }));
 });
 
-export const questionSubmitted = createThunk<BallFormData>(
+export const mintRequestSubmitted = createThunk<MintFormData>(
   async (args, dispatch, getState) => {
-    const state = getState()["8ball"];
+    const state = getState()["n0x-concept"];
 
-    const contract = EightBallFactory(state.chainId);
+    const contract = N0xAlphaArt(state.chainId);
 
     if (!contract) {
       dispatch(
-        actions.questionSubmittedFailure({
+        actions.mintRequestSubmittedFailure({
           message: `This contract is not yet available on CHAIN_ID ${state.chainId}`,
         })
       );
       return;
     }
 
-    contract.once("EightBallAdded", (err, evt) => {
-      const { answer } = evt.returnValues;
-      dispatch(actions.questionSubmittedSuccess(answer));
-    });
-
-    dispatch(actions.questionSubmittedPending());
+    dispatch(actions.mintRequestSubmittedPending());
 
     try {
       await contract.methods
-        .askQuestion(args.question)
-        .send({ from: state.account });
+        .mintTokens(args.quantity)
+        .send({
+          from: state.account,
+          value: web3.utils.toWei("0.05", "ether"),
+        });
+      dispatch(actions.mintRequestSubmittedSuccess("ok"));
     } catch (e) {
-      dispatch(actions.questionSubmittedFailure(e));
+      dispatch(actions.mintRequestSubmittedFailure(e));
     }
   }
 );
 
 export const actions = createDispatches(slice.actions, {
   connectClicked,
-  questionSubmitted,
+  mintRequestSubmitted,
   pageLoaded,
 });
