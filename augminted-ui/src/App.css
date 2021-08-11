@@ -15,7 +15,7 @@
   --size-200: 0.75rem;
   --size-300: 1rem;
   --size-400: 1.25rem;
-  --header-height: 8.5rem;
+  --header-height: 7.75rem;
 }
 
 @media (min-width: 1024px) {
@@ -140,6 +140,10 @@ p + p {
   flex: 1 1 0%;
 }
 
+.flex-none {
+  flex: none;
+}
+
 .header {
   background-color: var(--color-lemon);
   z-index: 9999;
@@ -151,7 +155,7 @@ p + p {
   position: sticky;
   top: 0;
   height: var(--header-height);
-  font-size: 20pt;
+  font-size: 17pt;
 }
 
 @media (min-width: 1024px) {
@@ -334,7 +338,11 @@ details summary::marker {
 }
 
 .team-member-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.team-member-title{
+  margin-top: 1.5rem;
 }
 
 @media (min-width: 950px) {

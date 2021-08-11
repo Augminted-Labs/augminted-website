@@ -85,7 +85,7 @@ function EightBall(props: AppProps) {
         </button>
         <div>
           <pre>
-            <code style={{ color: "rgb(94,94,94)", fontSize: "small" }}>
+            <span style={{ color: "rgb(94,94,94)", fontSize: "small" }}>
               ACCOUNT: {account}
               <br />
               CHAIN_ID: {chainId}
@@ -102,7 +102,7 @@ function EightBall(props: AppProps) {
                   {failure}
                 </span>
               )}
-            </code>
+            </span>
           </pre>
         </div>
       </form>

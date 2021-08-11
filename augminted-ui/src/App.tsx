@@ -356,14 +356,14 @@ export function Wristband(props: WristbandProps) {
         <div style={{ maxWidth: "7rem" }}>
           <WristbandTape />
         </div>
-        <code className="wristband-code">{code}</code>
+        <span className="wristband-code">{code}</span>
       </div>
       <div className={`wristband-body`}>
         <div className="wristband-heading">
           <div className="mie-bold wristband-heading-title">
             {kind} : {title}
           </div>
-          <code>* {subtitle}</code>
+          <span>* {subtitle}</span>
         </div>
         <div className="mie-bold h-big">&lt;&lt; {title}</div>
       </div>
@@ -423,7 +423,7 @@ function TeamMember(props: TeamMemberProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="team-member"
+      className="team-member flex-none"
       style={{
         maxWidth: "20rem",
       }}
@@ -437,9 +437,9 @@ function TeamMember(props: TeamMemberProps) {
           paddingLeft: "0.5rem",
         }}
       />
-      <div className='heading-margin'>
+      <div className="heading-margin">
         <div className="mie-bold team-member-name">{name}</div>
-        <div className="mie-bold">&gt;&gt; {title}</div>
+        <div className="mie-bold team-member-title">&gt;&gt; {title}</div>
       </div>
       <div>{children}</div>
     </a>
