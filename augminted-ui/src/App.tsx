@@ -12,8 +12,6 @@ import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
 import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useLayoutEffect } from "react";
-
-import { EightBallConnected } from "./8ball/EightBall";
 import { N0xscapeConceptConnected } from "./n0x-concept/N0xscapeConcept";
 
 export function HomePage() {
@@ -175,32 +173,34 @@ export function HomePage() {
           translate={gt1024 ? 1 : 0}
           code="000003"
         >
-          <div className="contact-area no-wrap">
-            <a
-              href="https://twitter.com/augminted"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact"
-            >
-              <FaTwitter style={{ fontSize: "8rem" }} />
-              @augminted
-            </a>
-            <a
-              href="https://github.com/Augminted-Labs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact"
-            >
-              <FaGithub style={{ fontSize: "8rem" }} />
-              Augminted-Labs
-            </a>
-            <a
-              href="mailto:nathan@augmintedlabs.io?subject=[Inquiry] I want to work with Augminted Labs!"
-              className="contact"
-            >
-              <FaEnvelope style={{ fontSize: "8rem" }} />
-              Email
-            </a>
+          <div className="contact-area">
+            <div className="contact-tiles">
+              <a
+                href="https://twitter.com/augminted"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact"
+              >
+                <FaTwitter className='contact-icon' />
+              </a>
+              <a
+                href="https://github.com/Augminted-Labs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact"
+              >
+                <FaGithub className='contact-icon'/>
+              </a>
+              <a
+                href="mailto:nathan@augmintedlabs.io?subject=[Inquiry] I want to work with Augminted Labs!"
+                className="contact"
+              >
+                <FaEnvelope className='contact-icon' />
+              </a>
+            </div>
+            <div className="mie-bold contact-label">
+              To contact us directly - click through
+            </div>
           </div>
         </Wristband>
         <Wristband

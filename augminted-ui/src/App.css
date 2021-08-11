@@ -370,7 +370,22 @@ details summary::marker {
 
 .contact-area {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  text-align: center;
+}
+
+.contact-tiles {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-label {
+  font-size: 9pt;
+}
+
+.contact-icon {
+  font-size: 3rem;
 }
 
 .contact {
@@ -381,20 +396,15 @@ details summary::marker {
   padding: var(--size-300);
 }
 
-@media (min-width: 750px) {
-  .contact {
-    padding-left: 3rem;
-    padding-right: 3rem;
+@media (min-width: 1024px) {
+  .contact-label {
+    font-size: var(--font-size-body);
   }
 
-  .contact + .contact {
-    border-left: 1px solid white;
+  .contact-icon {
+    font-size: 7rem;
   }
-
-  .contact-area {
-    flex-direction: row;
-    justify-content: center;
-  }
+  
 }
 
 .project-area {

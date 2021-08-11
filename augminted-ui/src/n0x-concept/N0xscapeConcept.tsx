@@ -99,6 +99,7 @@ function N0xscapeConcept(props: AppProps) {
                     color: "whitesmoke",
                     fontWeight: "bold",
                     padding: "var(--size-100)",
+                    marginTop: "var(--size-200)"
                   }}
                 >
                   {failure}
