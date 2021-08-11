@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { RootState } from "./store";
 
 type ThunkView<TArgs = void> = TArgs extends void
   ? () => void
