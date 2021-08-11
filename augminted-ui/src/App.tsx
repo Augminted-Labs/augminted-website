@@ -18,7 +18,7 @@ import { N0xscapeConceptConnected } from "./n0x-concept/N0xscapeConcept";
 
 export function HomePage() {
   const [openSection, setOpenSection] = useState<string>();
-  const [gt880] = useMediaQuery("(min-width: 880px)");
+  const [gt1024] = useMediaQuery("(min-width: 1024px)");
 
   function handleWristbandClicked(id: string) {
     return () => {
@@ -35,10 +35,10 @@ export function HomePage() {
     <>
       <header className="header">
         <div style={{ display: "flex", gap: "1rem" }}>
-          <div style={{ maxWidth: "3rem" }}>
+          <div style={{ width: "3rem" }}>
             <AugmintedLogo />
           </div>
-          <div style={{ maxWidth: "3rem" }}>
+          <div style={{ width: "3rem" }}>
             <EthLogo />
           </div>
         </div>
@@ -55,20 +55,16 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "about"}
           onClick={handleWristbandClicked("about")}
-          color="black"
+          color="cerise"
           kind="Info"
           title="About"
           subtitle="Augminted Labs information"
-          translate={gt880 ? 1 : 0}
+          translate={gt1024 ? 1 : 0}
           code="000001"
           contentAreaColor="black"
         >
-          <div className="about-area">
-            <div className="title">
-              <span className="mie-bold">Augminted</span>{" "}
-              <span className="mie-light">Labs</span>
-            </div>
-            <div className="mie-bold">Our collective</div>
+          <div className="about-area readable">
+            <div className="mie-bold my-300">Our collective</div>
             <div>
               <p>Decentraliaztion doesn't have to mean alienation.</p>
               <p>
@@ -95,7 +91,7 @@ export function HomePage() {
                 , and start your Augminted journey.
               </p>
             </div>
-            <div className="mie-bold">We do</div>
+            <div className="mie-bold my-300">We do</div>
             <div>
               <ul>
                 <li>Graphic design and illustration</li>
@@ -109,11 +105,11 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "team"}
           onClick={handleWristbandClicked("team")}
-          color="cerise"
+          color="lemon"
           kind="Info"
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
-          translate={gt880 ? 2 : 0}
+          translate={gt1024 ? 2 : 0}
           code="000002"
         >
           <div className="team-area">
@@ -123,13 +119,7 @@ export function HomePage() {
               title="Founder &amp; Software Engineer"
               url="https://twitter.com/ohDotss"
             >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "var(--size-100)",
-                }}
-              >
+              <p>
                 <ul>
                   <li>Hip-Hop Head</li>
                   <li>Beer Enthusiast</li>
@@ -139,7 +129,7 @@ export function HomePage() {
                   Success is not final, failure is not fatal: it is the courage
                   to continue that counts.
                 </q>
-              </div>
+              </p>
             </TeamMember>
             <TeamMember
               name="3LLL"
@@ -178,11 +168,11 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "contact"}
           onClick={handleWristbandClicked("contact")}
-          color="blue"
+          color="cerise"
           kind="Info"
           title="Contact"
           subtitle="Augminted Labs"
-          translate={gt880 ? 3 : 0}
+          translate={gt1024 ? 1 : 0}
           code="000003"
         >
           <div className="contact-area no-wrap">
@@ -216,24 +206,24 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "n0x"}
           onClick={handleWristbandClicked("n0x")}
-          color="cerise"
+          color="lemon"
           kind="Project"
           title="n0xscape"
           subtitle="Concept Art and Early Support"
-          translate={gt880 ? 1 : 0}
+          translate={gt1024 ? 2 : 0}
           code="00004"
           contentAreaColor="white"
         >
           <N0xscapeConceptConnected />
         </Wristband>
-        <Wristband
+        {/* <Wristband
           isOpen={openSection === "ETH"}
           onClick={handleWristbandClicked("ETH")}
           color="black"
           kind="Project"
           title="Ethereals"
           subtitle="Web3 Development"
-          translate={gt880 ? 2 : 0}
+          translate={gt1024 ? 2 : 0}
           code="00005"
           contentAreaColor="black"
         >
@@ -252,7 +242,7 @@ export function HomePage() {
           kind="Project"
           title="N0XSCAPE ALPHA"
           subtitle="Web3 Development"
-          translate={gt880 ? 3 : 0}
+          translate={gt1024 ? 3 : 0}
           code="00006"
           contentAreaColor="black"
         >
@@ -271,7 +261,7 @@ export function HomePage() {
           kind="Project"
           title="Beats &amp; Houseplants"
           subtitle="Music for the soul"
-          translate={gt880 ? 1 : 0}
+          translate={gt1024 ? 1 : 0}
           code="00007"
           contentAreaColor="black"
         >
@@ -290,7 +280,7 @@ export function HomePage() {
           kind="Project"
           title="Magic Eight Ball"
           subtitle="Ask and Receive"
-          translate={gt880 ? 2 : 0}
+          translate={gt1024 ? 2 : 0}
           code="00008"
           contentAreaColor="black"
         >
@@ -303,7 +293,7 @@ export function HomePage() {
           kind="Info"
           title="Careers"
           subtitle="Interested in joining the team?"
-          translate={gt880 ? 3 : 0}
+          translate={gt1024 ? 3 : 0}
           code="00009"
           contentAreaColor="black"
         >
@@ -314,7 +304,7 @@ export function HomePage() {
             </div>
             <div className="mie-bold">Project Details Coming Soon</div>
           </div>
-        </Wristband>
+        </Wristband> */}
       </main>
       <footer className="footer">
         <div>&copy; Augminted Labs</div>
@@ -325,7 +315,7 @@ export function HomePage() {
 }
 
 export type WristbandProps = {
-  color: "lemon" | "cerise" | "blue" | "black";
+  color: "lemon" | "cerise";
   contentAreaColor?: "black" | "white";
   kind: string;
   title: string;
@@ -349,7 +339,7 @@ export function Wristband(props: WristbandProps) {
     isOpen,
     onClick,
   } = props;
-  const [gt880] = useMediaQuery("(min-width: 880px)");
+  const [gt1024] = useMediaQuery("(min-width: 1024px)");
   const ref = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -373,9 +363,9 @@ export function Wristband(props: WristbandProps) {
           <div className="mie-bold wristband-heading-title">
             {kind} : {title}
           </div>
-          <code className="wristband-heading-subtitle">* {subtitle}</code>
+          <code>* {subtitle}</code>
         </div>
-        <div className="mie-bold wristband-main-title">&lt;&lt; {title}</div>
+        <div className="mie-bold h-big">&lt;&lt; {title}</div>
       </div>
     </div>
   );
@@ -383,7 +373,7 @@ export function Wristband(props: WristbandProps) {
   const state = isOpen ? "open" : "closed";
   const contentAreaClassName = `content-area content-area-${state} content-area-${contentAreaColor}`;
 
-  if (gt880) {
+  if (gt1024) {
     return (
       <section ref={ref}>
         <div
@@ -447,8 +437,10 @@ function TeamMember(props: TeamMemberProps) {
           paddingLeft: "0.5rem",
         }}
       />
-      <div className="mie-bold team-member-name">{name}</div>
-      <div className="mie-bold">&gt;&gt; {title}</div>
+      <div className='my-300'>
+        <div className="mie-bold team-member-name">{name}</div>
+        <div className="mie-bold">&gt;&gt; {title}</div>
+      </div>
       <div>{children}</div>
     </a>
   );

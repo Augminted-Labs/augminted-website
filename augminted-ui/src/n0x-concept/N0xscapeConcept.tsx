@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 import * as Slice from "./N0xscapeConcept.slice";
 import { RootState } from "../store";
 import { useEffect } from "react";
+import A1 from "../images/a1.png";
+import A2 from "../images/a2.png";
+import A3 from "../images/a3.png";
+import A4 from "../images/a4.png";
+import A5 from "../images/a5.png";
+import A6 from "../images/a6.png";
+import A7 from "../images/a7.png";
 
 type AppProps = Slice.N0xscapeConceptState & typeof Slice.actions;
 
@@ -36,7 +43,7 @@ function N0xscapeConcept(props: AppProps) {
 
   if (view === "needs-provider") {
     formSection = (
-      <div className="message">
+      <div className="concept-message">
         To participate, install a crypto wallet &mdash; we suggest{" "}
         <a href="https://metamask.io/" rel="noopener noreferrer">
           MetaMask.
@@ -55,7 +62,9 @@ function N0xscapeConcept(props: AppProps) {
 
   if (view === "connecting") {
     formSection = (
-      <div className="message">Waiting for your account to connect...</div>
+      <div className="concept-message">
+        Waiting for your account to connect...
+      </div>
     );
   }
 
@@ -104,7 +113,9 @@ function N0xscapeConcept(props: AppProps) {
 
   if (view === "submitting") {
     formSection = (
-      <div className="message">Waiting for the transaction to complete...</div>
+      <div className="concept-message">
+        Waiting for the transaction to complete...
+      </div>
     );
   }
 
@@ -113,15 +124,42 @@ function N0xscapeConcept(props: AppProps) {
       <div>
         <div>Success!</div>
         <div>
-          Check out your{" "}
-          <a href="https://opensea.io/account">opensea.io</a> account!
+          Check out your <a href="https://opensea.io/account">opensea.io</a>{" "}
+          account!
         </div>
       </div>
     );
   }
   return (
     <div className="concept-area">
-      <div className="concept-form">{formSection}</div>
+      <div className="concept-blurb">
+        <img src={A1} alt="" />
+        <div className="concept-text readable">
+          <div className="mie-bold my-300">
+            What are N0XSCAPE Concept Art Cards?
+          </div>
+          <p>
+            N0XSCAPE is a play-to-earn NFT game that exists on the Ethereum
+            blockchain.
+          </p>
+          <p>
+            Each card acts as a mint pass for the N0XSCAPE alpha drop, member
+            perks in our Discord, and some fun surprises later on. N0XSCAPE
+            Concept Art Cards consist of 5 generations of development from
+            multiple artists and highlights our journet to our current art
+            style.
+          </p>
+        </div>
+      </div>
+      <div className="concept-form my-300">{formSection}</div>
+      <div className="extra-pics">
+        <img src={A2} alt="" />
+        <img src={A3} alt="" />
+        <img src={A4} alt="" />
+        <img src={A5} alt="" />
+        <img src={A6} alt="" />
+        <img src={A7} alt="" />
+      </div>
     </div>
   );
 }

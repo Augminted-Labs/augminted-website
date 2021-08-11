@@ -72,6 +72,11 @@ type ConnectClickedSuccessPayload = {
 export const pageLoaded = createThunk(async (args, dispatch, getState) => {
   const provider: any = await detectProvider();
 
+  if (!provider) {
+    dispatch(slice.actions.pageLoadedFailure());
+    return;
+  }
+
   provider.on("chainChanged", (chainId: any) => {
     console.log("Changing to: ", chainId);
     // Handle the new chain.
@@ -79,11 +84,6 @@ export const pageLoaded = createThunk(async (args, dispatch, getState) => {
     // We recommend reloading the page unless you have good reason not to.
     window.location.reload();
   });
-
-  if (!provider) {
-    dispatch(slice.actions.pageLoadedFailure());
-    return;
-  }
 
   dispatch(slice.actions.pageLoadedSuccess());
 });

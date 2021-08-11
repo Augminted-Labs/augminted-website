@@ -1,52 +1,76 @@
 .concept-area {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-200);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-200);
+  text-align: center;
+}
+
+.concept-message {
+  max-width: 30ch;
+  margin-top: var(--size-300);
+  margin-bottom: var(--size-300);
+}
+
+.concept-form {
+  font-family: "miedinger";
+  font-size: x-large;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.concept-button {
+  font-family: "miedinger";
+  background-color: transparent;
+  color: black;
+  padding: 1rem;
+  border: 1px solid black;
+  transition: all 0.5s ease;
+}
+
+.concept-button:hover,
+.concept-button:focus {
+  background-color: black;
+  color: whitesmoke;
+}
+
+input[type="number"] {
+  font-family: "miedinger";
+  background-color: transparent;
+  color: black;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.concept-area img {
+  image-rendering: pixelated;
+  max-width: 24rem;
+}
+
+.concept-blurb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.extra-pics {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .concept-blurb {
+    flex-direction: row-reverse;
+    gap: 3rem;
   }
-  
-  @media (min-width: 950px) {
-    .concept-area {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 0;
-    }
-  
-    .message {
-      margin-right: 1rem;
-    }
+
+  .extra-pics {
+    display: block;
   }
-  
-  .concept-form {
-    font-family: "miedinger";
-    font-size: x-large;
-    font-style: italic;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-right: -1px;
+
+  .extra-pics img {
+    margin: 0.5rem;
   }
-  
-  .concept-button {
-    font-family: "miedinger";
-    background-color: transparent;
-    color: black;
-    padding: 1rem;
-    border: 1px solid black;
-    transition: all 0.5s ease;
-  }
-  
-  .concept-button:hover,
-  .concept-button:focus {
-    background-color: black;
-    color: whitesmoke;
-  }
-  
-  input[type="number"] {
-    font-family: "miedinger";
-    background-color: transparent;
-    color: black;
-    padding: 1rem;
-    border: 1px solid black;
-  }
-  
+}
