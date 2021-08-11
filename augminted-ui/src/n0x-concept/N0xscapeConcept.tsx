@@ -146,7 +146,7 @@ function N0xscapeConcept(props: AppProps) {
             Each card acts as a mint pass for the N0XSCAPE alpha drop, member
             perks in our Discord, and some fun surprises later on. N0XSCAPE
             Concept Art Cards consist of 5 generations of development from
-            multiple artists and highlights our journet to our current art
+            multiple artists and highlights our journey to our current art
             style.
           </p>
         </div>
