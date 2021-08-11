@@ -328,6 +328,11 @@ details summary::marker {
   padding: var(--size-300);
 }
 
+.team-member img {
+  width: 100%;
+  height: auto;
+}
+
 .team-member-name {
   font-size: 1.5rem;
 }
