@@ -379,6 +379,7 @@ export function Wristband(props: WristbandProps) {
         <div
           tabIndex={0}
           onClick={onClick}
+          onFocus={onClick}
           onKeyDown={withEnter(onClick)}
           className={`wristband-container wristband-${color} translate-reset`}
           style={{
@@ -399,6 +400,7 @@ export function Wristband(props: WristbandProps) {
       <div
         tabIndex={0}
         onClick={onClick}
+        onFocus={onClick}
         onKeyDown={withEnter(onClick)}
         className={`wristband-${color}`}
       >
