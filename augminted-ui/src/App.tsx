@@ -63,8 +63,8 @@ export function HomePage() {
           code="000001"
           contentAreaColor="black"
         >
-          <div className="about-area readable">
-            <div className="mie-bold my-300">Our collective</div>
+          <div className="about-area">
+            <div className="mie-bold heading-margin">Our collective</div>
             <div>
               <p>Decentraliaztion doesn't have to mean alienation.</p>
               <p>
@@ -91,7 +91,7 @@ export function HomePage() {
                 , and start your Augminted journey.
               </p>
             </div>
-            <div className="mie-bold my-300">We do</div>
+            <div className="mie-bold heading-margin">We do</div>
             <div>
               <ul>
                 <li>Graphic design and illustration</li>
@@ -437,7 +437,7 @@ function TeamMember(props: TeamMemberProps) {
           paddingLeft: "0.5rem",
         }}
       />
-      <div className='my-300'>
+      <div className='heading-margin'>
         <div className="mie-bold team-member-name">{name}</div>
         <div className="mie-bold">&gt;&gt; {title}</div>
       </div>

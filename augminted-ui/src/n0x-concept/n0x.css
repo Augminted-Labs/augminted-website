@@ -1,9 +1,7 @@
 .concept-area {
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: var(--size-200);
-  text-align: center;
 }
 
 .concept-message {
@@ -18,7 +16,6 @@
   font-style: italic;
   display: flex;
   justify-content: center;
-  text-align: center;
 }
 
 .concept-button {
@@ -52,6 +49,7 @@ input[type="number"] {
 .concept-blurb {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
@@ -62,15 +60,27 @@ input[type="number"] {
 
 @media (min-width: 1024px) {
   .concept-blurb {
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 3rem;
   }
 
+  .concept-lead-image {
+    order: 2;
+  }
+
+  .concept-text {
+    order: 1;
+  }
+
   .extra-pics {
-    display: block;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 2rem;
   }
 
   .extra-pics img {
     margin: 0.5rem;
+    max-width: calc((100% / 3) - 3rem);
   }
 }

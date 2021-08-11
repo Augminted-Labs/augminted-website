@@ -133,9 +133,9 @@ function N0xscapeConcept(props: AppProps) {
   return (
     <div className="concept-area">
       <div className="concept-blurb">
-        <img src={A1} alt="" />
-        <div className="concept-text readable">
-          <div className="mie-bold my-300">
+        <img className='concept-lead-image' src={A1} alt="" />
+        <div className="concept-text">
+          <div className="mie-bold heading-margin">
             What are N0XSCAPE Concept Art Cards?
           </div>
           <p>
@@ -151,7 +151,7 @@ function N0xscapeConcept(props: AppProps) {
           </p>
         </div>
       </div>
-      <div className="concept-form my-300">{formSection}</div>
+      <div className="concept-form heading-margin">{formSection}</div>
       <div className="extra-pics">
         <img src={A2} alt="" />
         <img src={A3} alt="" />

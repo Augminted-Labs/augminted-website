@@ -130,9 +130,13 @@ p + p {
   text-decoration: underline;
 }
 
-.my-300 {
-  margin-top: var(--size-400);
-  margin-bottom: var(--size-400);
+.heading-margin {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .header {
@@ -176,7 +180,7 @@ section {
 .footer {
   color: rgb(78, 78, 78);
   text-align: center;
-  padding: var(--size-100);
+  padding: var(--size-400);
 }
 
 .title {
@@ -286,22 +290,16 @@ details summary::marker {
 }
 
 .content-area {
-  height: 0;
-  transform: scaleY(0);
-  transform-origin: top;
-  overflow: hidden;
-  transition: 0.9s ease;
-  display: flex;
+  display: none;
   justify-content: center;
+  padding: 6rem;
 }
 
 .content-area-open {
-  height: auto;
-  transform: scaleY(100%);
+  display: flex;
 }
 
 .team-area {
-  margin: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -343,19 +341,13 @@ details summary::marker {
 }
 
 .about-area {
-  margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--size-300);
 }
 
-.readable {
-  max-width: 65ch;
-}
-
 .contact-area {
-  margin: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -385,7 +377,6 @@ details summary::marker {
 }
 
 .project-area {
-  margin: 2rem;
 }
 
 .no-wrap {
