@@ -55,7 +55,7 @@ function N0xscapeConcept(props: AppProps) {
   if (view === "disconnected") {
     formSection = (
       <button className="concept-button" onClick={connectClicked}>
-        Connect to eth
+        Connect to wallet
       </button>
     );
   }
@@ -85,28 +85,30 @@ function N0xscapeConcept(props: AppProps) {
         <button className="concept-button" type="submit">
           Mint Token 0.05ETH each
         </button>
-        <div>
-          <pre>
-            <span style={{ color: "rgb(94,94,94)", fontSize: "small" }}>
-              ACCOUNT: {account}
-              <br />
-              CHAIN_ID: {chainId}
-              <br />
-              {failure && (
-                <span
-                  style={{
-                    backgroundColor: "var(--color-cerise)",
-                    color: "whitesmoke",
-                    fontWeight: "bold",
-                    padding: "var(--size-100)",
-                    marginTop: "var(--size-200)"
-                  }}
-                >
-                  {failure}
-                </span>
-              )}
-            </span>
-          </pre>
+        <div
+          style={{
+            color: "rgb(94,94,94)",
+            fontSize: "small",
+            display: "flex",
+            flexDirection: "column",
+            gap: 'var(--size-200)',
+            fontFamily: 'monospace'
+          }}
+        >
+          <div>ACCOUNT: {account}</div>
+          <div>CHAIN_ID: {chainId}</div>
+          {failure && (
+            <div
+              style={{
+                backgroundColor: "var(--color-cerise)",
+                color: "whitesmoke",
+                fontWeight: "bold",
+                padding: "var(--size-100)",
+              }}
+            >
+              {failure}
+            </div>
+          )}
         </div>
       </form>
     );
@@ -134,7 +136,7 @@ function N0xscapeConcept(props: AppProps) {
   return (
     <div className="concept-area">
       <div className="concept-blurb">
-        <img className='concept-lead-image' src={A1} alt="" />
+        <img className="concept-lead-image" src={A1} alt="" />
         <div className="concept-text">
           <div className="mie-bold heading-margin">
             What are N0XSCAPE Concept Art Cards?
