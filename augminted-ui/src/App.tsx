@@ -50,14 +50,27 @@ export function HomePage() {
         </div>
       </header>
       <main>
+      <Wristband
+          isOpen={openSection === "n0x"}
+          onClick={handleWristbandClicked("n0x")}
+          color="cerise"
+          kind="Project"
+          title="n0xscape"
+          subtitle="Concept Art and Early Support"
+          translate={gt1024 ? 1 : 0}
+          code="00004"
+          contentAreaColor="white"
+        >
+          <N0xscapeConceptConnected />
+        </Wristband>
         <Wristband
           isOpen={openSection === "about"}
           onClick={handleWristbandClicked("about")}
-          color="cerise"
+          color="lemon"
           kind="Info"
           title="About"
           subtitle="Augminted Labs information"
-          translate={gt1024 ? 1 : 0}
+          translate={gt1024 ? 2 : 0}
           code="000001"
           contentAreaColor="black"
         >
@@ -103,11 +116,11 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "team"}
           onClick={handleWristbandClicked("team")}
-          color="lemon"
+          color="cerise"
           kind="Info"
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
-          translate={gt1024 ? 2 : 0}
+          translate={gt1024 ? 1 : 0}
           code="000002"
         >
           <div className="team-area">
@@ -166,11 +179,11 @@ export function HomePage() {
         <Wristband
           isOpen={openSection === "contact"}
           onClick={handleWristbandClicked("contact")}
-          color="cerise"
+          color="lemon"
           kind="Info"
           title="Contact"
           subtitle="Augminted Labs"
-          translate={gt1024 ? 1 : 0}
+          translate={gt1024 ? 2 : 0}
           code="000003"
         >
           <div className="contact-area">
@@ -202,19 +215,6 @@ export function HomePage() {
               To contact us directly - click through
             </div>
           </div>
-        </Wristband>
-        <Wristband
-          isOpen={openSection === "n0x"}
-          onClick={handleWristbandClicked("n0x")}
-          color="lemon"
-          kind="Project"
-          title="n0xscape"
-          subtitle="Concept Art and Early Support"
-          translate={gt1024 ? 2 : 0}
-          code="00004"
-          contentAreaColor="white"
-        >
-          <N0xscapeConceptConnected />
         </Wristband>
         {/* <Wristband
           isOpen={openSection === "ETH"}
