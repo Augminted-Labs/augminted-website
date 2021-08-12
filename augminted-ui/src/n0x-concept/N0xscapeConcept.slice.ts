@@ -116,12 +116,15 @@ export const mintRequestSubmitted = createThunk<MintFormData>(
 
     dispatch(actions.mintRequestSubmittedPending());
 
+    const price = 0.05;
+    const totalCost = parseInt(args.quantity, 10) * price;
+
     try {
       await contract.methods
         .mintTokens(args.quantity)
         .send({
           from: state.account,
-          value: web3.utils.toWei("0.05", "ether"),
+          value: web3.utils.toWei(totalCost.toString(), "ether"),
         });
       dispatch(actions.mintRequestSubmittedSuccess("ok"));
     } catch (e) {
