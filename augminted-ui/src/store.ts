@@ -1,4 +1,3 @@
-import * as EightBallSlice from "./8ball/EightBall.slice";
 import * as N0xscapeConceptSlice from "./n0x-concept/N0xscapeConcept.slice";
 import {
   createStore,
@@ -13,13 +12,11 @@ type MappedReducer<T> = {
 };
 
 export interface RootState {
-  [EightBallSlice.slice.name]: EightBallSlice.EightBallState;
   [N0xscapeConceptSlice.slice.name]: N0xscapeConceptSlice.N0xscapeConceptState;
 }
 
 export const reducers: MappedReducer<RootState> = {
-  [EightBallSlice.slice.name]: EightBallSlice.slice.reducer,
-  [N0xscapeConceptSlice.slice.name]: N0xscapeConceptSlice.slice.reducer
+  [N0xscapeConceptSlice.slice.name]: N0xscapeConceptSlice.slice.reducer,
 };
 
 export function makeStore() {
