@@ -78,12 +78,18 @@ export function HomePage() {
   const [gt1024] = useMediaQuery("(min-width: 1024px)");
 
   useLayoutEffect(() => {
-    const headerHeight =
-      document.querySelector(".header")?.getBoundingClientRect().height || 0;
+    const handleWindowResize = () => {
+      const headerHeight =
+        document.querySelector(".header")?.getBoundingClientRect().height || 0;
 
-    const root = document.querySelector<HTMLElement>(":root")!;
-    root?.style.setProperty("--js-header-height", `${headerHeight}px`);
-  }, [gt1024]);
+      const root = document.querySelector<HTMLElement>(":root")!;
+      root?.style.setProperty("--js-header-height", `${headerHeight}px`);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   function handleWristbandClicked(id: SectionId) {
     return () => {
@@ -108,7 +114,7 @@ export function HomePage() {
             <AugmintedLogo style={{ width: "3rem" }} />
             <EthLogo style={{ width: "3rem" }} />
           </div>
-          <div className="flex-row items-baseline no-wrap gap50">
+          <div className="flex-row items-baseline no-wrap gap50 font-size-title">
             <span className="mie-bold">Augminted</span>{" "}
             <span className="mie-light">Labs</span>
           </div>
@@ -344,7 +350,7 @@ export function Wristband(props: WristbandProps) {
     >
       <div
         className="none md:flex-row bg-white black items-center justify-between"
-        style={{ minWidth: "10rem" }}
+        style={{ width: "10rem" }}
       >
         <div style={{ maxWidth: "7rem" }}>
           <WristbandTape />

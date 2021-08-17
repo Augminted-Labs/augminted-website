@@ -18,6 +18,16 @@
   top: 0;
 }
 
+.font-size-title {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .font-size-title {
+    font-size: 2rem;
+  }
+}
+
 .wristband-code {
   transform: rotate(90deg);
 }
