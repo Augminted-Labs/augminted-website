@@ -16,13 +16,14 @@
   --size-400: 1.25rem;
   --font-size-body: 12pt;
   --font-size-big: 24pt;
+  --font-size-title: 1.5rem;
 }
 
 @media (min-width: 1024px) {
   :root {
     --font-size-body: 14pt;
     --font-size-big: 36pt;
-    --header-height: 7rem;
+    --font-size-title: 2rem;
   }
 }
 
@@ -372,6 +373,10 @@ p + p {
 
 .font-size-big {
   font-size: var(--font-size-big);
+}
+
+.font-size-title {
+  font-size: var(--font-size-title);
 }
 
 .font-size-small {

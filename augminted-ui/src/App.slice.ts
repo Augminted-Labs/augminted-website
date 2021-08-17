@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { N0xAlphaArt, instance as web3 } from "./contract.hub";
-import { createDispatches, createThunk } from "../utils";
+import { N0xAlphaArt, instance as web3 } from "./n0x-concept/contract.hub";
+import { createDispatches, createThunk } from "./utils";
 import detectProvider from "@metamask/detect-provider";
 
-export interface N0xscapeConceptState {
+export type SectionId = undefined | "n0xscape" | "about" | "team" | "contact";
+export interface HomePageState {
   view:
     | "needs-provider"
     | "disconnected"
@@ -14,23 +15,25 @@ export interface N0xscapeConceptState {
   account: string;
   failure: string;
   chainId: number;
+  activeSection: SectionId;
 }
 
 export interface MintFormData {
   quantity: string;
 }
 
-export function makeInitialState(): N0xscapeConceptState {
+export function makeInitialState(): HomePageState {
   return {
     view: "disconnected",
     account: "",
     failure: "",
     chainId: -1,
+    activeSection: undefined,
   };
 }
 
 export const slice = createSlice({
-  name: "n0x-concept",
+  name: "home",
   initialState: makeInitialState(),
   reducers: {
     pageLoadedFailure(state) {
@@ -60,6 +63,16 @@ export const slice = createSlice({
     },
     mintRequestSubmittedSuccess(state, action: PayloadAction<string>) {
       state.view = "success";
+    },
+    sectionSelected(state, action: PayloadAction<SectionId>) {
+      const id = action.payload;
+
+      if (state.activeSection === id) {
+        state.activeSection = undefined;
+        return;
+      }
+
+      state.activeSection = action.payload;
     },
   },
 });
@@ -101,7 +114,7 @@ export const connectClicked = createThunk(async (args, dispatch, getState) => {
 
 export const mintRequestSubmitted = createThunk<MintFormData>(
   async (args, dispatch, getState) => {
-    const state = getState()["n0x-concept"];
+    const state = getState().home;
 
     const contract = N0xAlphaArt(state.chainId);
 
@@ -120,12 +133,10 @@ export const mintRequestSubmitted = createThunk<MintFormData>(
     const totalCost = parseInt(args.quantity, 10) * price;
 
     try {
-      await contract.methods
-        .mintTokens(args.quantity)
-        .send({
-          from: state.account,
-          value: web3.utils.toWei(totalCost.toString(), "ether"),
-        });
+      await contract.methods.mintTokens(args.quantity).send({
+        from: state.account,
+        value: web3.utils.toWei(totalCost.toString(), "ether"),
+      });
       dispatch(actions.mintRequestSubmittedSuccess("ok"));
     } catch (e) {
       dispatch(actions.mintRequestSubmittedFailure(e));

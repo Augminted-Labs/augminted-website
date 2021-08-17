@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HomePage } from "./App";
+import { HomePageConnected } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { makeStore } from "./store";
@@ -11,7 +11,7 @@ async function launch() {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-        <HomePage />
+        <HomePageConnected />
       </Provider>
     </React.StrictMode>,
     document.getElementById("root")

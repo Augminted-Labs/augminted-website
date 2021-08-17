@@ -1,41 +1,41 @@
 import React, {
   CSSProperties,
   PropsWithChildren,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
+import { FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
+import { connect } from "react-redux";
 import "./util-styles.css";
 import "./App.css";
+import * as Slice from "./App.slice";
 import {
   AugmintedLogo,
   EthLogo,
-  WristbandTape,
   HeaderDecoration,
+  WristbandTape,
 } from "./Icons";
-import { useMediaQuery } from "./utils";
 import dotsImage from "./images/Cool-Cat-3985---no-background.png";
 import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
-import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
-import { useLayoutEffect } from "react";
-import { N0xscapeConceptConnected } from "./n0x-concept/N0xscapeConcept";
-import { classNames } from "./utils";
-
-type SectionId = undefined | "n0xscape" | "about" | "team" | "contact";
+import { N0xscapeConcept } from "./n0x-concept/N0xscapeConcept";
+import { RootState } from "./store";
+import { classNames, useMediaQuery } from "./utils";
 
 interface NavBarProps {
-  activeSection: SectionId;
-  onClick(id: SectionId): void;
+  activeSection: Slice.SectionId;
+  onClick(id: Slice.SectionId): void;
 }
 
 function NavBar(props: NavBarProps) {
   const { activeSection, onClick } = props;
 
-  function handleClick(id: SectionId) {
+  function handleClick(id: Slice.SectionId) {
     return () => onClick(id);
   }
 
-  function linkClassName(id: SectionId) {
+  function linkClassName(id: Slice.SectionId) {
     return id === activeSection ? "active-nav-link" : "";
   }
 
@@ -73,12 +73,15 @@ function NavBar(props: NavBarProps) {
   );
 }
 
-export function HomePage() {
-  const [activeSection, setActiveSection] = useState<SectionId>();
+export type HomePageProps = Slice.HomePageState & typeof Slice.actions;
+
+export function HomePage(props: HomePageProps) {
+  const { activeSection, sectionSelected } = props;
   const [gt1024] = useMediaQuery("(min-width: 1024px)");
 
   useLayoutEffect(() => {
     const handleWindowResize = () => {
+      // Measure the header and let CSS handle scroll margins.
       const headerHeight =
         document.querySelector(".header")?.getBoundingClientRect().height || 0;
 
@@ -86,20 +89,15 @@ export function HomePage() {
       root?.style.setProperty("--js-header-height", `${headerHeight}px`);
     };
 
+    // Set it once on first page load, and run on resize.
+    handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
 
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
-  function handleWristbandClicked(id: SectionId) {
-    return () => {
-      if (activeSection === id) {
-        setActiveSection(undefined);
-        return;
-      }
-
-      setActiveSection(id);
-    };
+  function handleSectionSelected(id: Slice.SectionId) {
+    return () => sectionSelected(id);
   }
 
   return (
@@ -107,7 +105,7 @@ export function HomePage() {
       <header className="header bg-lemon flex-column justify-center items-center">
         <a
           href="#home"
-          onClick={handleWristbandClicked(undefined)}
+          onClick={handleSectionSelected(undefined)}
           className="flex-column md:flex-row justify-around p200 gap200 items-center font-size-big w100"
         >
           <div className="flex-row gap200">
@@ -125,13 +123,13 @@ export function HomePage() {
         </a>
         <NavBar
           activeSection={activeSection}
-          onClick={(x) => handleWristbandClicked(x)()}
+          onClick={(x) => handleSectionSelected(x)()}
         />
       </header>
       <main>
         <Wristband
           isOpen={activeSection === "n0xscape"}
-          onClick={handleWristbandClicked("n0xscape")}
+          onClick={handleSectionSelected("n0xscape")}
           color="cerise"
           kind="Project"
           title="n0xscape"
@@ -140,11 +138,11 @@ export function HomePage() {
           code="00001"
           contentAreaColor="white"
         >
-          <N0xscapeConceptConnected />
+          <N0xscapeConcept {...props} />
         </Wristband>
         <Wristband
           isOpen={activeSection === "about"}
-          onClick={handleWristbandClicked("about")}
+          onClick={handleSectionSelected("about")}
           color="lemon"
           kind="Info"
           title="About"
@@ -174,7 +172,7 @@ export function HomePage() {
                 <a
                   className="link"
                   href="#contact"
-                  onClick={handleWristbandClicked("contact")}
+                  onClick={handleSectionSelected("contact")}
                 >
                   Contact us
                 </a>
@@ -194,7 +192,7 @@ export function HomePage() {
         </Wristband>
         <Wristband
           isOpen={activeSection === "team"}
-          onClick={handleWristbandClicked("team")}
+          onClick={handleSectionSelected("team")}
           color="cerise"
           kind="Info"
           title="Team"
@@ -259,7 +257,7 @@ export function HomePage() {
         </Wristband>
         <Wristband
           isOpen={activeSection === "contact"}
-          onClick={handleWristbandClicked("contact")}
+          onClick={handleSectionSelected("contact")}
           color="lemon"
           kind="Info"
           title="Contact"
@@ -469,3 +467,13 @@ function filterEnterKey(f: Function) {
     }
   };
 }
+
+export const HomePageConnected = connect<
+  Slice.HomePageState,
+  typeof Slice.actions,
+  {},
+  RootState
+>(
+  (state) => state.home,
+  Slice.actions
+)(HomePage);

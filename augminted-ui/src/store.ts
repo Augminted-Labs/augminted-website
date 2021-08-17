@@ -1,4 +1,4 @@
-import * as N0xscapeConceptSlice from "./n0x-concept/N0xscapeConcept.slice";
+import * as HomePageSlice from "./App.slice";
 import {
   createStore,
   combineReducers,
@@ -12,11 +12,11 @@ type MappedReducer<T> = {
 };
 
 export interface RootState {
-  [N0xscapeConceptSlice.slice.name]: N0xscapeConceptSlice.N0xscapeConceptState;
+  [HomePageSlice.slice.name]: HomePageSlice.HomePageState;
 }
 
 export const reducers: MappedReducer<RootState> = {
-  [N0xscapeConceptSlice.slice.name]: N0xscapeConceptSlice.slice.reducer,
+  [HomePageSlice.slice.name]: HomePageSlice.slice.reducer,
 };
 
 export function makeStore() {

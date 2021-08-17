@@ -1,8 +1,6 @@
 import "./n0x.css";
 import { useForm } from "react-hook-form";
-import { connect } from "react-redux";
-import * as Slice from "./N0xscapeConcept.slice";
-import { RootState } from "../store";
+import * as Slice from "../App.slice";
 import { useEffect } from "react";
 import A1 from "../images/a1.png";
 import A2 from "../images/a2.png";
@@ -12,9 +10,9 @@ import A5 from "../images/a5.png";
 import A6 from "../images/a6.png";
 import A7 from "../images/a7.png";
 
-type AppProps = Slice.N0xscapeConceptState & typeof Slice.actions;
+export type N0xscapeConceptProps = Slice.HomePageState & typeof Slice.actions;
 
-function N0xscapeConcept(props: AppProps) {
+export function N0xscapeConcept(props: N0xscapeConceptProps) {
   const {
     view,
     account,
@@ -147,13 +145,3 @@ function N0xscapeConcept(props: AppProps) {
     </div>
   );
 }
-
-export const N0xscapeConceptConnected = connect<
-  Slice.N0xscapeConceptState,
-  typeof Slice.actions,
-  {},
-  RootState
->(
-  (state) => state["n0x-concept"],
-  Slice.actions
-)(N0xscapeConcept);
