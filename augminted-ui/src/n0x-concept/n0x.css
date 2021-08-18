@@ -43,7 +43,13 @@ input[type="number"] {
 
 .concept-area img {
   image-rendering: pixelated;
-  max-width: 20rem;
+  width: 320px;
+}
+
+@media (min-width: 500px) {
+  .concept-area img {
+    width: 410px;
+  }
 }
 
 .concept-blurb {
@@ -59,11 +65,6 @@ input[type="number"] {
 }
 
 @media (min-width: 1024px) {
-  .concept-area img {
-    min-width: 20rem;
-    max-width: calc((100% / 3) - 3rem);
-  }
-
   .concept-blurb {
     flex-direction: row;
     gap: 3rem;
@@ -86,6 +87,6 @@ input[type="number"] {
 
   .extra-pics img {
     margin: 0.5rem;
-    max-width: calc((100% / 3) - 3rem);
+    width: 410px;
   }
 }

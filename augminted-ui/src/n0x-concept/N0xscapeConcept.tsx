@@ -1,9 +1,6 @@
-import "animate.css";
 import "./n0x.css";
 import { useForm } from "react-hook-form";
-import { connect } from "react-redux";
-import * as Slice from "./N0xscapeConcept.slice";
-import { RootState } from "../store";
+import * as Slice from "../App.slice";
 import { useEffect } from "react";
 import A1 from "../images/a1.png";
 import A2 from "../images/a2.png";
@@ -13,9 +10,9 @@ import A5 from "../images/a5.png";
 import A6 from "../images/a6.png";
 import A7 from "../images/a7.png";
 
-type AppProps = Slice.N0xscapeConceptState & typeof Slice.actions;
+export type N0xscapeConceptProps = Slice.HomePageState & typeof Slice.actions;
 
-function N0xscapeConcept(props: AppProps) {
+export function N0xscapeConcept(props: N0xscapeConceptProps) {
   const {
     view,
     account,
@@ -26,18 +23,13 @@ function N0xscapeConcept(props: AppProps) {
     pageLoaded,
   } = props;
 
-  const { handleSubmit, register, formState, reset } =
-    useForm<Slice.MintFormData>({
-      defaultValues: { quantity: "" },
-    });
+  const { handleSubmit, register } = useForm<Slice.MintFormData>({
+    defaultValues: { quantity: "" },
+  });
 
   useEffect(() => {
     pageLoaded();
-  }, []);
-
-  const ballClassName = formState.isSubmitting
-    ? "ball animate__animated animate__wobble"
-    : "ball";
+  }, [pageLoaded]);
 
   let formSection = null;
 
@@ -45,7 +37,11 @@ function N0xscapeConcept(props: AppProps) {
     formSection = (
       <div className="concept-message">
         To participate, install a crypto wallet &mdash; we suggest{" "}
-        <a href="https://metamask.io/" rel="noopener noreferrer">
+        <a
+          className="link"
+          href="https://metamask.io/"
+          rel="noopener noreferrer"
+        >
           MetaMask.
         </a>
       </div>
@@ -72,7 +68,7 @@ function N0xscapeConcept(props: AppProps) {
     formSection = (
       <form
         onSubmit={handleSubmit(mintRequestSubmitted)}
-        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+        className="flex-column gap300"
       >
         <input
           type="number"
@@ -85,30 +81,10 @@ function N0xscapeConcept(props: AppProps) {
         <button className="concept-button" type="submit">
           Mint Token 0.05ETH each
         </button>
-        <div
-          style={{
-            color: "rgb(94,94,94)",
-            fontSize: "small",
-            display: "flex",
-            flexDirection: "column",
-            gap: 'var(--size-200)',
-            fontFamily: 'monospace'
-          }}
-        >
+        <div className="darkgrey flex-column gap200 monospace font-size-small">
           <div>ACCOUNT: {account}</div>
           <div>CHAIN_ID: {chainId}</div>
-          {failure && (
-            <div
-              style={{
-                backgroundColor: "var(--color-cerise)",
-                color: "whitesmoke",
-                fontWeight: "bold",
-                padding: "var(--size-100)",
-              }}
-            >
-              {failure}
-            </div>
-          )}
+          {failure && <div className="bg-cerise white p100">{failure}</div>}
         </div>
       </form>
     );
@@ -127,7 +103,10 @@ function N0xscapeConcept(props: AppProps) {
       <div>
         <div>Success!</div>
         <div>
-          Check out your <a href="https://opensea.io/account">opensea.io</a>{" "}
+          Check out your{" "}
+          <a className="link" href="https://opensea.io/account">
+            opensea.io
+          </a>{" "}
           account!
         </div>
       </div>
@@ -166,13 +145,3 @@ function N0xscapeConcept(props: AppProps) {
     </div>
   );
 }
-
-export const N0xscapeConceptConnected = connect<
-  Slice.N0xscapeConceptState,
-  typeof Slice.actions,
-  {},
-  RootState
->(
-  (state) => state["n0x-concept"],
-  Slice.actions
-)(N0xscapeConcept);
