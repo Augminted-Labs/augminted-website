@@ -25,6 +25,7 @@
     "animate.css": "^4.1.1",
     "clsx": "^1.1.1",
     "cross-env": "^7.0.3",
+    "prop-sets": "^1.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.12.2",

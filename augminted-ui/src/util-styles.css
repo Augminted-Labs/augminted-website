@@ -114,6 +114,10 @@ p + p {
   background-color: var(--color-blue);
 }
 
+.bg-darkgrey {
+  background-color: var(--color-darkgrey);
+}
+
 .black {
   color: var(--color-black);
 }
