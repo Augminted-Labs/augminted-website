@@ -33,6 +33,14 @@ export function N0xscapeConcept(props: N0xscapeConceptProps) {
 
   let formSection = null;
 
+  if (view === "sold-out") {
+    formSection = (
+      <button className="concept-button" disabled>
+        Sold out
+      </button>
+    );
+  }
+
   if (view === "needs-provider") {
     formSection = (
       <div className="concept-message">

@@ -6,6 +6,7 @@ import detectProvider from "@metamask/detect-provider";
 export type SectionId = undefined | "n0xscape" | "about" | "team" | "contact";
 export interface HomePageState {
   view:
+    | "sold-out"
     | "needs-provider"
     | "disconnected"
     | "connecting"
@@ -24,7 +25,7 @@ export interface MintFormData {
 
 export function makeInitialState(): HomePageState {
   return {
-    view: "disconnected",
+    view: "sold-out",
     account: "",
     failure: "",
     chainId: -1,
@@ -37,7 +38,7 @@ export const slice = createSlice({
   initialState: makeInitialState(),
   reducers: {
     pageLoadedFailure(state) {
-      state.view = "needs-provider";
+      // state.view = "needs-provider";
     },
     pageLoadedSuccess(state) {
       // todo
