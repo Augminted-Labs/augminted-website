@@ -3,7 +3,7 @@ import { N0xAlphaArt, instance as web3 } from "./n0x-concept/contract.hub";
 import { createDispatches, createThunk } from "./utils";
 import detectProvider from "@metamask/detect-provider";
 
-export type SectionId = undefined | "n0xscape" | "about" | "team" | "contact";
+export type SectionId = undefined | "ethereals" | "zillas" | "n0xscape" | "about" | "team" | "contact";
 export interface HomePageState {
   view:
     | "sold-out"

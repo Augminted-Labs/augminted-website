@@ -19,6 +19,7 @@ import {
 import dotsImage from "./images/Cool-Cat-3985---no-background.png";
 import lllImage from "./images/Cool-Cat-5049---no-background.png";
 import eelzyImage from "./images/Cool-Cat-7722---no-background.png";
+import etherealsImage from "./images/ethereals.png";
 import { N0xscapeConcept } from "./n0x-concept/N0xscapeConcept";
 import { RootState } from "./store";
 import { classNames, useMediaQuery } from "./utils";
@@ -42,11 +43,15 @@ function NavBar(props: NavBarProps) {
   return (
     <nav className="nav none md:flex-row justify-center">
       <a
-        href="#n0xscape"
-        className={linkClassName("n0xscape")}
-        onClick={handleClick("n0xscape")}
+        href="#ethereals"
+        className={
+          linkClassName("ethereals") ||
+          linkClassName("zillas") ||
+          linkClassName("n0xscape")
+        }
+        onClick={handleClick("ethereals")}
       >
-        N0XSCAPE
+        Projects
       </a>
       <a
         href="#about"
@@ -128,6 +133,66 @@ export function HomePage(props: HomePageProps) {
       </header>
       <main>
         <Wristband
+          isOpen={activeSection === "ethereals"}
+          onClick={handleSectionSelected("ethereals")}
+          color="cerise"
+          kind="Project"
+          title="ETHEREALS"
+          subtitle="Haunted NFT"
+          translate={gt1024 ? 1 : 0}
+          code="00001"
+          contentAreaColor="white"
+        >
+          <div className="flex-column md:flex-row items-center gap300 justify-center">
+            <div>
+              <p>
+                ETHEREALS are 12,345 hand drawn, randomly generated,
+                interdimensional ghosts. Their traits are pulled from all
+                reaches of the metaverse and include surprising mashups of
+                cultural references all the way down to super-insider rarities.
+              </p>
+              <p>
+                Augminted Labs provides the smart contract powering ETHEREALS.
+                Visit the ETHEREALS FUN PARK™ by clicking the link below to find
+                out more about what we've created together.
+              </p>
+              <div className="flex-column mt200 items-center">
+                <a
+                  className="concept-button mt300"
+                  href="https://ethereals.wtf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ethereals.wtf
+                </a>
+              </div>
+            </div>
+            <div className="p400">
+              <img
+                src={etherealsImage}
+                alt=""
+                style={{ width: "100%", minWidth: "300px" }}
+              />
+            </div>
+          </div>
+        </Wristband>
+        <Wristband
+          isOpen={activeSection === "zillas"}
+          onClick={handleSectionSelected("zillas")}
+          color="lemon"
+          kind="Project"
+          title="?????"
+          subtitle="Global Alert System"
+          translate={gt1024 ? 2 : 0}
+          code="00002"
+          contentAreaColor="white"
+        >
+          <div className="flex-column items-center text-center mie gap300">
+            <div>An ominous rumble echoes in the distance...</div>
+            <div>🌋</div>
+          </div>
+        </Wristband>
+        <Wristband
           isOpen={activeSection === "n0xscape"}
           onClick={handleSectionSelected("n0xscape")}
           color="cerise"
@@ -135,7 +200,7 @@ export function HomePage(props: HomePageProps) {
           title="n0xscape"
           subtitle="Concept Art and Early Support"
           translate={gt1024 ? 1 : 0}
-          code="00001"
+          code="00003"
           contentAreaColor="white"
         >
           <N0xscapeConcept {...props} />
@@ -148,7 +213,7 @@ export function HomePage(props: HomePageProps) {
           title="About"
           subtitle="Augminted Labs information"
           translate={gt1024 ? 2 : 0}
-          code="00002"
+          code="00004"
           contentAreaColor="black"
         >
           <div className="flex-column items-center gap300">
@@ -198,7 +263,7 @@ export function HomePage(props: HomePageProps) {
           title="Team"
           subtitle="ohDots, 3LLL, eelzy"
           translate={gt1024 ? 1 : 0}
-          code="00003"
+          code="00005"
         >
           <div className="flex-column md:flex-row justify-center gap300">
             <TeamMember
@@ -263,7 +328,7 @@ export function HomePage(props: HomePageProps) {
           title="Contact"
           subtitle="Augminted Labs"
           translate={gt1024 ? 2 : 0}
-          code="00004"
+          code="00006"
         >
           <div className="flex-column justify-center text-center">
             <div className="flex-row justify-center">
